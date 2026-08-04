@@ -140,12 +140,7 @@
 
     // Optional sections: heading and all.
     if (record.eligibility) {
-      var panel = node.querySelector("[data-field='eligibility-panel']");
-      var button = node.querySelector("[data-field='eligibility-button']");
-      var panelId = "eligibility-panel";
-      panel.id = panelId;
-      button.setAttribute("aria-controls", panelId);
-      paragraphs(panel, record.eligibility);
+      paragraphs(node.querySelector("[data-field='eligibility']"), record.eligibility);
     } else {
       removeSection(node, "eligibility");
     }

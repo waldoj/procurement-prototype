@@ -113,7 +113,6 @@ written rather than edited to match.
    This satisfies the actual requirement behind §8.6 — tooltips that work by
    keyboard in dynamically rendered rows — by a different mechanism.
 
-
 ## Verifying
 
 There is no test suite. Serve the directory and walk `SPEC.md` §10 by hand.
