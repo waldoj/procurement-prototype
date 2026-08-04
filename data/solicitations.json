@@ -1,0 +1,952 @@
+{
+  "agencies": [
+    {
+      "id": "transportation",
+      "name": "Department of Transportation",
+      "description": "Builds and maintains the state's highways, bridges, and public transit systems. Buys road construction, engineering studies, heavy equipment, and traffic technology.",
+      "website": "https://dot.example.gov"
+    },
+    {
+      "id": "health",
+      "name": "Department of Health",
+      "description": "Runs public health programs, clinics, and health inspections across the state. Buys medical supplies, clinic services, software, and lab equipment.",
+      "website": "https://health.example.gov"
+    },
+    {
+      "id": "education",
+      "name": "Department of Education",
+      "description": "Supports the state's public schools and sets standards for what students learn. Buys textbooks, student software, teacher training, and school building services.",
+      "website": "https://education.example.gov"
+    },
+    {
+      "id": "administrative-services",
+      "name": "Department of Administrative Services",
+      "description": "Handles the state's own operations, including buildings, payroll, and technology used by other agencies. Buys office supplies, furniture, business software, and building maintenance.",
+      "website": "https://admin.example.gov"
+    },
+    {
+      "id": "environment",
+      "name": "Department of Environmental Quality",
+      "description": "Monitors air and water quality and enforces pollution rules statewide. Buys laboratory testing, monitoring equipment, engineering studies, and cleanup work.",
+      "website": "https://deq.example.gov"
+    },
+    {
+      "id": "public-safety",
+      "name": "Department of Public Safety",
+      "description": "Runs the state police, emergency response, and the 911 system. Buys vehicles, radios, protective gear, dispatch software, and training.",
+      "website": "https://safety.example.gov"
+    },
+    {
+      "id": "human-services",
+      "name": "Department of Human Services",
+      "description": "Delivers food assistance, child welfare, and support programs for older adults. Buys case management software, counseling services, food, and transportation.",
+      "website": "https://humanservices.example.gov"
+    },
+    {
+      "id": "natural-resources",
+      "name": "Department of Natural Resources",
+      "description": "Manages state parks, forests, lakes, and wildlife areas. Buys trail and campground construction, forestry work, boats, and land surveys.",
+      "website": "https://dnr.example.gov"
+    },
+    {
+      "id": "corrections",
+      "name": "Department of Corrections",
+      "description": "Operates the state's prisons and supervises people on probation and parole. Buys food service, medical care, security systems, and job training programs.",
+      "website": "https://corrections.example.gov"
+    },
+    {
+      "id": "revenue",
+      "name": "Department of Revenue",
+      "description": "Collects state taxes and processes tax returns and refunds. Buys tax processing software, printing and mailing services, call center staffing, and auditing help.",
+      "website": "https://revenue.example.gov"
+    }
+  ],
+  "categories": [
+    {
+      "id": "construction",
+      "name": "Construction and building",
+      "description": "New buildings, road work, bridges, renovations, and demolition."
+    },
+    {
+      "id": "it-software",
+      "name": "Information technology",
+      "description": "Computers, networks, software, cybersecurity, and technical support."
+    },
+    {
+      "id": "professional-services",
+      "name": "Professional services",
+      "description": "Consulting, legal help, accounting, engineering studies, and research."
+    },
+    {
+      "id": "vehicles-equipment",
+      "name": "Vehicles and equipment",
+      "description": "Cars, trucks, heavy machinery, and the parts and repairs they need."
+    },
+    {
+      "id": "facilities-maintenance",
+      "name": "Facilities and maintenance",
+      "description": "Cleaning, landscaping, heating and cooling repair, and building upkeep."
+    },
+    {
+      "id": "health-medical",
+      "name": "Health and medical",
+      "description": "Medical supplies, lab testing, clinical staffing, and health screenings."
+    },
+    {
+      "id": "food-agriculture",
+      "name": "Food and agriculture",
+      "description": "Food for state facilities, farming supplies, and inspection services."
+    },
+    {
+      "id": "training-education",
+      "name": "Training and education",
+      "description": "Classroom instruction, online courses, textbooks, and staff development."
+    },
+    {
+      "id": "office-supplies",
+      "name": "Office supplies and furniture",
+      "description": "Paper, desks, chairs, printers, and everyday workplace goods."
+    },
+    {
+      "id": "transportation-logistics",
+      "name": "Transportation and logistics",
+      "description": "Shipping, warehousing, bus and van services, and fleet fuel delivery."
+    }
+  ],
+  "solicitations": [
+    {
+      "solicitationNumber": "COL-2026-0142",
+      "title": "Managed network services for 14 rural health clinics",
+      "summary": "The Department of Health needs a company to run and maintain the computer networks at 14 rural clinics. The work covers the equipment, the internet connections, and day-to-day troubleshooting.",
+      "description": "The Department of Health operates 14 clinics in rural parts of the state. Each clinic has between 5 and 30 staff members who need reliable internet and network access to see patients, look up records, and bill for services.\n\nRight now, each clinic manages its own equipment, and service is uneven. The department wants to hire one company to take over all 14 sites and provide consistent service across them.\n\nThe work includes supplying and installing network equipment, managing internet connections at each site, monitoring the networks for problems, and responding when something breaks. The department expects a four-hour response time during business hours and next-business-day response otherwise.\n\nPrevious government experience is not required. Bidders do need to show that they have run networks at multiple locations at once.",
+      "agency": "health",
+      "category": "it-software",
+      "status": "open",
+      "postedDate": "2026-06-24",
+      "deadline": "2026-08-07T14:00:00-05:00",
+      "questionsDeadline": "2026-07-24T17:00:00-05:00",
+      "estimatedValue": "$400,000 to $600,000 over 3 years",
+      "contractTerm": "3 years, with two 1-year renewals the state may choose to use",
+      "eligibility": "Any business may bid. You must be registered to do business in the State of Columbia before a contract is signed, but you do not need to be registered to submit a bid.\n\nYou will need to show that your company has managed networks at three or more locations at the same time, and that you carry at least $1 million in general liability insurance.",
+      "preBidMeeting": {
+        "datetime": "2026-07-15T10:00:00-05:00",
+        "location": "Online. Register by email with the contracting officer to receive the link.",
+        "required": false
+      },
+      "submission": "Email your complete bid to dana.whitfield@example.gov with \"COL-2026-0142\" in the subject line.\n\nYour bid must arrive by 2:00 PM Central time on August 7, 2026. The department goes by the time the email arrives on its server, not the time you sent it. Bids that arrive late are not opened.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Request for Proposals",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Clinic locations and current equipment",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-pricing-worksheet.pdf",
+          "label": "Pricing worksheet",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Dana Whitfield",
+        "title": "Contracting Officer",
+        "email": "dana.whitfield@example.gov",
+        "phone": "(555) 010-4412"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0148",
+      "title": "Winter road salt delivered to six highway depots",
+      "summary": "The Department of Transportation needs road salt delivered to six depots before winter. The contractor supplies the salt and trucks it in as the department asks for it.",
+      "description": "The Department of Transportation keeps road salt at six depots around the state and spreads it on highways during snow and ice.\n\nThe department wants a supplier to deliver up to 40,000 tons of road salt over the winter. Deliveries happen on a few days' notice, so the supplier must be able to truck salt in quickly once the department calls.\n\nThe department will not commit to a total amount ahead of time. Payment covers what is actually delivered, at the per-ton price in the winning bid.\n\nThis is a straightforward supply contract. Small trucking companies have won it before.",
+      "agency": "transportation",
+      "category": "transportation-logistics",
+      "status": "open",
+      "postedDate": "2026-07-06",
+      "deadline": "2026-08-10T14:00:00-05:00",
+      "questionsDeadline": null,
+      "estimatedValue": "Depends on how much is ordered",
+      "contractTerm": "One winter season, October 2026 through April 2027",
+      "eligibility": "Any business may bid. You must be able to show that you can deliver at least 500 tons within 48 hours of a request.",
+      "preBidMeeting": null,
+      "submission": "Mail two paper copies of your bid to the Department of Transportation, Attention: Purchasing, 400 State Street, Room 210, Capitol City, Columbia 21001.\n\nYour bid must arrive by 2:00 PM Central time on August 10, 2026. A postmark is not enough. The department opens bids in public that afternoon, and you are welcome to attend.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Invitation for Bids",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-pricing-worksheet.pdf",
+          "label": "Price-per-ton worksheet",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Marcus Ferrell",
+        "title": "Purchasing Agent",
+        "email": "marcus.ferrell@example.gov",
+        "phone": "(555) 010-3308"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0151",
+      "title": "Replacement of the Cedar Creek bridge on State Highway 9",
+      "summary": "The Department of Transportation needs a contractor to tear down and rebuild a 240-foot highway bridge. The road stays closed to traffic during the work.",
+      "description": "The Cedar Creek bridge carries State Highway 9 over Cedar Creek in Marsh County. It was built in 1961 and inspectors have rated its deck and supports as poor.\n\nThe department will close the bridge and detour traffic while the work happens. The contractor removes the existing structure, drives new supports, and builds a new two-lane bridge roughly 240 feet long.\n\nWork cannot start before April 2027 because of fish spawning limits in the creek. The department expects the bridge to reopen within 11 months of the start date.\n\nThe department will hold back part of each payment until the work passes final inspection.",
+      "agency": "transportation",
+      "category": "construction",
+      "status": "open",
+      "postedDate": "2026-07-20",
+      "deadline": "2026-09-18T14:00:00-05:00",
+      "questionsDeadline": "2026-08-21T17:00:00-05:00",
+      "estimatedValue": "Not to exceed $4.8 million",
+      "contractTerm": "About 11 months of construction, starting April 2027",
+      "eligibility": null,
+      "preBidMeeting": {
+        "datetime": "2026-08-25T09:00:00-05:00",
+        "location": "Cedar Creek bridge site, State Highway 9 at mile marker 44, Marsh County. Wear boots and a hard hat.",
+        "required": true
+      },
+      "submission": "Deliver one sealed paper bid to the Department of Transportation, Attention: Construction Contracts, 400 State Street, Room 118, Capitol City, Columbia 21001.\n\nYour bid must arrive by 2:00 PM Central time on September 18, 2026. Write \"COL-2026-0151\" on the outside of the envelope. Bids are opened in public right after the deadline.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Request for Proposals",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Bridge inspection report and drawings",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-pricing-worksheet.pdf",
+          "label": "Bid schedule",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Priya Raghunathan",
+        "title": "Construction Contracts Officer",
+        "email": "priya.raghunathan@example.gov",
+        "phone": "(555) 010-2277"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0155",
+      "title": "Spanish and Hmong interpreters for child welfare meetings",
+      "summary": "The Department of Human Services needs interpreters for meetings with families who do not speak English. Interpreters are called as needed, usually with a few days' notice.",
+      "description": "Caseworkers at the Department of Human Services meet regularly with families involved in child welfare cases. Some of those families speak Spanish or Hmong rather than English.\n\nThe department wants interpreters it can call on for these meetings, which happen in county offices, family homes, and occasionally courtrooms. Most meetings last one to two hours and are scheduled several days ahead, though some are urgent.\n\nInterpreters must hold a recognized interpreting credential and must keep everything they hear confidential. The department provides training on the specific vocabulary used in child welfare work.\n\nBids may cover one language or both. Individual interpreters working for themselves are welcome to bid, not just agencies.",
+      "agency": "human-services",
+      "category": "professional-services",
+      "status": "open",
+      "postedDate": "2026-07-28",
+      "deadline": "2026-09-04T17:00:00-05:00",
+      "questionsDeadline": "2026-08-20T17:00:00-05:00",
+      "estimatedValue": "About $85,000 a year",
+      "contractTerm": "2 years, with three 1-year renewals the state may choose to use",
+      "eligibility": "Both individual interpreters and agencies may bid. You must hold a current credential from a recognized interpreter certifying body, and you must pass a background check before your first assignment.",
+      "preBidMeeting": null,
+      "submission": "Email your bid to alice.nakamura@example.gov with \"COL-2026-0155\" in the subject line. Say clearly which language or languages you are bidding to cover.\n\nYour bid must arrive by 5:00 PM Central time on September 4, 2026.",
+      "attachments": [],
+      "contact": {
+        "name": "Alice Nakamura",
+        "title": "Contract Specialist",
+        "email": "alice.nakamura@example.gov",
+        "phone": "(555) 010-5561"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0158",
+      "title": "Office chairs for the Capitol City revenue building",
+      "summary": "The Department of Revenue needs about 180 desk chairs to replace worn-out ones. The supplier delivers them and hauls the old chairs away.",
+      "description": "The Department of Revenue is replacing desk chairs on three floors of its Capitol City building. Most of the current chairs are more than 15 years old.\n\nThe department needs about 180 chairs. Each one must adjust for height, tilt, and arm position, and must hold at least 300 pounds. The department will look at samples before deciding.\n\nThe supplier delivers the chairs, puts them together if they need assembly, and takes the old chairs away for recycling or disposal.\n\nThe department wants everything delivered within 60 days of signing.",
+      "agency": "revenue",
+      "category": "office-supplies",
+      "status": "open",
+      "postedDate": "2026-07-14",
+      "deadline": "2026-08-28T14:00:00-05:00",
+      "questionsDeadline": "2026-08-14T17:00:00-05:00",
+      "estimatedValue": "About $72,000",
+      "contractTerm": "A single delivery, finished within 60 days",
+      "eligibility": "Any business may bid. You will be asked to provide one sample chair for the department to examine, and it will be returned to you.",
+      "preBidMeeting": null,
+      "submission": "Email your bid to gerald.osei@example.gov with \"COL-2026-0158\" in the subject line. Include a picture and the manufacturer's specification sheet for the chair you are offering.\n\nYour bid must arrive by 2:00 PM Central time on August 28, 2026.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Invitation for Bids",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-pricing-worksheet.pdf",
+          "label": "Pricing worksheet",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Gerald Osei",
+        "title": "Purchasing Agent",
+        "email": "gerald.osei@example.gov",
+        "phone": "(555) 010-6104"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0161",
+      "title": "Reading tutors for elementary students in eight school districts",
+      "summary": "The Department of Education needs tutors to work with young students who are behind in reading. Tutoring happens in schools during the school day.",
+      "description": "The Department of Education is funding extra reading help for students in first through third grade who are reading below grade level.\n\nThe department wants an organization to recruit, train, and manage tutors in eight school districts. Tutors work with small groups of two or three students for 30 minutes a day, four days a week, during the school year.\n\nThe organization hires the tutors, trains them in the reading approach the department has chosen, and makes sure they show up. The schools provide space and coordinate the schedule.\n\nThe department will measure how much students' reading improves and will share those results publicly.",
+      "agency": "education",
+      "category": "training-education",
+      "status": "open",
+      "postedDate": "2026-07-02",
+      "deadline": "2026-09-25T17:00:00-05:00",
+      "questionsDeadline": "2026-08-28T17:00:00-05:00",
+      "estimatedValue": "$1.1 million to $1.4 million a year",
+      "contractTerm": "One school year, with four 1-year renewals the state may choose to use",
+      "eligibility": "Any organization may bid, including nonprofits and staffing companies. Every tutor must pass a background check before working with students.\n\nYou must show that you have recruited and managed at least 25 staff members at more than one location.",
+      "preBidMeeting": {
+        "datetime": "2026-08-27T13:00:00-05:00",
+        "location": "Online. The link is posted with this opportunity one week beforehand.",
+        "required": false
+      },
+      "submission": "Upload your bid through the state's bid portal at the address in the Request for Proposals. If you have trouble with the upload, email the contracting officer before the deadline rather than after it.\n\nYour bid must arrive by 5:00 PM Central time on September 25, 2026.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Request for Proposals",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Participating districts and student counts",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Theodore Blanchard",
+        "title": "Contracting Officer",
+        "email": "theodore.blanchard@example.gov",
+        "phone": "(555) 010-7745"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0164",
+      "title": "Water testing for lakes and rivers across the state",
+      "summary": "The Department of Environmental Quality needs a lab to test water samples for pollution. Samples arrive by mail and results are reported back to the department.",
+      "description": "The Department of Environmental Quality collects water samples from about 300 lakes and rivers each year to check for pollution.\n\nThe department wants a laboratory to test those samples for bacteria, nutrients, and metals. Department staff collect the samples and ship them to the lab. The lab runs the tests and reports results through the department's online system within 10 business days.\n\nSample volume is heaviest between May and September and much lighter in winter.\n\nThe laboratory must be accredited for the specific tests involved, and the department may inspect the facility before awarding the contract.",
+      "agency": "environment",
+      "category": "health-medical",
+      "status": "open",
+      "postedDate": "2026-06-30",
+      "deadline": "2026-10-16T17:00:00-05:00",
+      "questionsDeadline": "2026-09-18T17:00:00-05:00",
+      "estimatedValue": "$240,000 to $310,000 a year",
+      "contractTerm": "3 years, with one 2-year renewal the state may choose to use",
+      "eligibility": "Your laboratory must hold current accreditation for drinking water and surface water testing. The department will verify your accreditation directly with the accrediting body.",
+      "preBidMeeting": null,
+      "submission": "Email your bid to fatima.oyelaran@example.gov with \"COL-2026-0164\" in the subject line. Attach a copy of your current accreditation certificate.\n\nYour bid must arrive by 5:00 PM Central time on October 16, 2026.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Request for Proposals",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Sample volumes and required tests",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-pricing-worksheet.pdf",
+          "label": "Pricing worksheet",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Fatima Oyelaran",
+        "title": "Contracting Officer",
+        "email": "fatima.oyelaran@example.gov",
+        "phone": "(555) 010-8829"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0167",
+      "title": "Two four-wheel-drive pickup trucks for park rangers",
+      "summary": "The Department of Natural Resources needs two pickup trucks for rangers who drive on unpaved park roads. The dealer delivers them ready to use.",
+      "description": "The Department of Natural Resources is replacing two pickup trucks used by rangers at state parks in the northern part of the state.\n\nThe department needs two three-quarter-ton four-wheel-drive pickup trucks with an extended cab and an eight-foot bed. Each truck needs a trailer hitch rated for at least 10,000 pounds and a factory snowplow package.\n\nThe trucks are delivered to the department's fleet garage in Capitol City with all paperwork and at least a half tank of fuel.\n\nThe department will accept trucks from the current or upcoming model year. Used vehicles are not accepted.",
+      "agency": "natural-resources",
+      "category": "vehicles-equipment",
+      "status": "open",
+      "postedDate": "2026-07-27",
+      "deadline": "2026-09-11T14:00:00-05:00",
+      "questionsDeadline": null,
+      "estimatedValue": "About $135,000 for both trucks",
+      "contractTerm": "A single delivery, expected within 120 days",
+      "eligibility": "You must be a franchised dealer for the make of vehicle you are offering.",
+      "preBidMeeting": null,
+      "submission": "Email your bid to hollis.tran@example.gov with \"COL-2026-0167\" in the subject line. Include the window sticker or build sheet for the exact truck you are offering.\n\nYour bid must arrive by 2:00 PM Central time on September 11, 2026.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Invitation for Bids",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Hollis Tran",
+        "title": "Fleet Purchasing Agent",
+        "email": "hollis.tran@example.gov",
+        "phone": "(555) 010-9963"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0170",
+      "title": "Food service for three state correctional facilities",
+      "summary": "The Department of Corrections needs a company to cook and serve meals at three prisons. The company runs the kitchens and buys the food.",
+      "description": "The Department of Corrections serves about 9,000 meals a day across three facilities.\n\nThe department wants one company to run all three kitchens. The company buys the food, prepares and serves three meals a day, and handles cleaning and sanitation in the kitchen and dining areas.\n\nMenus must meet the nutrition standards in the Request for Proposals and must accommodate medical and religious diets. A registered dietitian must review menus every quarter.\n\nSome kitchen jobs are filled by incarcerated workers as part of job training. The company supervises and helps train them alongside its own staff.",
+      "agency": "corrections",
+      "category": "food-agriculture",
+      "status": "open",
+      "postedDate": "2026-07-09",
+      "deadline": "2026-10-02T14:00:00-05:00",
+      "questionsDeadline": "2026-09-04T17:00:00-05:00",
+      "estimatedValue": "$8.5 million to $10 million a year",
+      "contractTerm": "5 years, with one 3-year renewal the state may choose to use",
+      "eligibility": "You must have run food service at a facility serving at least 1,000 meals a day. Every employee who enters a facility must pass a background check.\n\nThe department will visit at least one site you currently operate before awarding the contract.",
+      "preBidMeeting": {
+        "datetime": "2026-09-01T10:00:00-05:00",
+        "location": "Northgate Correctional Facility, 1200 County Road 12, Northgate, Columbia 21440. Bring photo identification and arrive 30 minutes early for screening.",
+        "required": true
+      },
+      "submission": "Deliver one sealed paper bid and one copy on a USB drive to the Department of Corrections, Attention: Contracts, 88 Justice Plaza, Capitol City, Columbia 21003.\n\nYour bid must arrive by 2:00 PM Central time on October 2, 2026. Write \"COL-2026-0170\" on the outside of the envelope.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Request for Proposals",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Facility kitchens and meal counts",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-pricing-worksheet.pdf",
+          "label": "Pricing worksheet",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Ruth Kowalczyk",
+        "title": "Contracting Officer",
+        "email": "ruth.kowalczyk@example.gov",
+        "phone": "(555) 010-1187"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0173",
+      "title": "Snow removal at 22 state office buildings in Capitol City",
+      "summary": "The Department of Administrative Services needs snow plowed and sidewalks cleared at 22 buildings. The work happens overnight after it snows.",
+      "description": "The Department of Administrative Services keeps 22 office buildings in and around Capitol City open through the winter.\n\nThe department wants a contractor to plow parking lots, clear sidewalks and building entrances, and spread ice melt whenever snow reaches two inches or more. Work happens overnight so lots are clear before staff arrive at 7:00 AM.\n\nThe contractor provides all equipment, ice melt, and staff. The department does not supply storage space on site.\n\nPayment is per event, at the price in the winning bid, based on how much snow fell. The department uses the official National Weather Service reading at the Capitol City airport to settle any disagreement.",
+      "agency": "administrative-services",
+      "category": "facilities-maintenance",
+      "status": "open",
+      "postedDate": "2026-08-03",
+      "deadline": "2026-11-06T14:00:00-06:00",
+      "questionsDeadline": "2026-10-16T17:00:00-05:00",
+      "estimatedValue": "Depends on how much it snows",
+      "contractTerm": "One winter season, November 2026 through April 2027",
+      "eligibility": "Any business may bid. You must show that you own or lease enough equipment to clear all 22 sites within six hours, and you must carry at least $2 million in general liability insurance.",
+      "preBidMeeting": {
+        "datetime": "2026-10-13T14:00:00-05:00",
+        "location": "Online. Register by email with the contracting officer to receive the link.",
+        "required": false
+      },
+      "submission": "Email your bid to samuel.eriksen@example.gov with \"COL-2026-0173\" in the subject line.\n\nYour bid must arrive by 2:00 PM Central time on November 6, 2026.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Request for Proposals",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Building addresses and lot sizes",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-pricing-worksheet.pdf",
+          "label": "Pricing worksheet",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Samuel Eriksen",
+        "title": "Contracting Officer",
+        "email": "samuel.eriksen@example.gov",
+        "phone": "(555) 010-2015"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0176",
+      "title": "Body cameras and video storage for the state patrol",
+      "summary": "The Department of Public Safety needs body cameras for 640 troopers, plus a system to store the video. One contract covers both, along with staff training.",
+      "description": "The Department of Public Safety is replacing the body cameras its troopers wear. The current cameras are five years old and no longer supported.\n\nThe department needs 640 cameras, the docks that charge them and upload video, and a system to store and manage the recordings. Video must be searchable by trooper, date, and case number, and the system must keep a record of everyone who views a file.\n\nStorage must be located in the United States and must meet the criminal justice security rules named in the Request for Proposals.\n\nThe contract also covers training department staff on the system and providing support for its full length.",
+      "agency": "public-safety",
+      "category": "it-software",
+      "status": "open",
+      "postedDate": "2026-07-16",
+      "deadline": "2026-10-09T17:00:00-05:00",
+      "questionsDeadline": "2026-09-11T17:00:00-05:00",
+      "estimatedValue": "Not to exceed $3.2 million over 5 years",
+      "contractTerm": "5 years, including hardware, storage, and support",
+      "eligibility": "You must show that your system is in use by at least three law enforcement agencies of similar size, and that it meets the FBI's criminal justice information security requirements.",
+      "preBidMeeting": {
+        "datetime": "2026-09-08T10:00:00-05:00",
+        "location": "Online. The link is posted with this opportunity one week beforehand.",
+        "required": false
+      },
+      "submission": "Upload your bid through the state's bid portal at the address in the Request for Proposals.\n\nYour bid must arrive by 5:00 PM Central time on October 9, 2026. The department recommends uploading at least a day early in case you run into trouble.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Request for Proposals",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Security and storage requirements",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-pricing-worksheet.pdf",
+          "label": "Pricing worksheet",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Camille Deschamps",
+        "title": "Contracting Officer",
+        "email": "camille.deschamps@example.gov",
+        "phone": "(555) 010-3390"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0119",
+      "title": "Roof replacement at the Riverside human services building",
+      "summary": "The Department of Human Services needed a contractor to replace a flat roof on a three-story office building.",
+      "description": "The Riverside human services building has a flat roof that has leaked in several places for the past two winters.\n\nThe department needed a contractor to remove the existing roof down to the deck, repair damaged decking, and install a new membrane roof with a 20-year warranty.\n\nThe building stayed open and staffed during the work, so the contractor had to keep the interior dry and control noise during business hours.",
+      "agency": "human-services",
+      "category": "construction",
+      "status": "open",
+      "postedDate": "2026-04-14",
+      "deadline": "2026-06-05T14:00:00-05:00",
+      "questionsDeadline": "2026-05-15T17:00:00-05:00",
+      "estimatedValue": "About $780,000",
+      "contractTerm": "About 4 months of construction",
+      "eligibility": "Bidders needed to be licensed roofing contractors in the State of Columbia and carry at least $1 million in general liability insurance.",
+      "preBidMeeting": {
+        "datetime": "2026-05-06T09:00:00-05:00",
+        "location": "Riverside human services building, 55 Riverside Drive, Capitol City, Columbia 21008.",
+        "required": true
+      },
+      "submission": "Bids were delivered in sealed paper form to the Department of Human Services, Attention: Facilities, 55 Riverside Drive, Capitol City, Columbia 21008.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Request for Proposals",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Roof drawings and inspection photos",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Alice Nakamura",
+        "title": "Contract Specialist",
+        "email": "alice.nakamura@example.gov",
+        "phone": "(555) 010-5561"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0103",
+      "title": "Laptops and monitors for the Department of Revenue",
+      "summary": "The Department of Revenue needed 900 laptops and docking stations to replace aging equipment.",
+      "description": "The Department of Revenue replaced the laptops used by its auditors and processing staff.\n\nThe department needed 900 laptops, docking stations, and monitors, delivered in batches over six months. Each machine had to arrive with the department's standard software image already installed.\n\nThe supplier also took back the old equipment and provided certificates showing the drives had been securely erased.",
+      "agency": "revenue",
+      "category": "it-software",
+      "status": "closed",
+      "postedDate": "2026-02-10",
+      "deadline": "2026-03-27T14:00:00-05:00",
+      "questionsDeadline": "2026-03-06T17:00:00-06:00",
+      "estimatedValue": "About $1.05 million",
+      "contractTerm": "Deliveries over 6 months",
+      "eligibility": null,
+      "preBidMeeting": null,
+      "submission": "Bids were emailed to the contracting officer with the opportunity number in the subject line.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Invitation for Bids",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-pricing-worksheet.pdf",
+          "label": "Pricing worksheet",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Gerald Osei",
+        "title": "Purchasing Agent",
+        "email": "gerald.osei@example.gov",
+        "phone": "(555) 010-6104"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0097",
+      "title": "Mowing and grounds care at 40 highway rest areas",
+      "summary": "The Department of Transportation needed a contractor to mow and maintain the grounds at rest areas along state highways.",
+      "description": "The Department of Transportation operates 40 rest areas along state highways. Each has lawn, picnic areas, and landscaped beds that need regular care from April through October.\n\nThe department needed a contractor to mow on a two-week cycle, trim around structures, maintain the beds, and pick up litter on each visit.\n\nThe contractor supplied all equipment and worked around the public, since rest areas stay open at all times.",
+      "agency": "transportation",
+      "category": "facilities-maintenance",
+      "status": "closed",
+      "postedDate": "2026-01-20",
+      "deadline": "2026-03-06T14:00:00-06:00",
+      "questionsDeadline": null,
+      "estimatedValue": "$310,000 a year",
+      "contractTerm": "2 years, with two 1-year renewals",
+      "eligibility": "Any business could bid.",
+      "preBidMeeting": null,
+      "submission": "Bids were mailed in sealed paper form to the Department of Transportation purchasing office.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Invitation for Bids",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Rest area locations",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Marcus Ferrell",
+        "title": "Purchasing Agent",
+        "email": "marcus.ferrell@example.gov",
+        "phone": "(555) 010-3308"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0088",
+      "title": "Flu vaccine supplied to county public health clinics",
+      "summary": "The Department of Health needed a supplier to deliver flu vaccine to county clinics before the 2026 flu season.",
+      "description": "The Department of Health buys flu vaccine each year and distributes it to county public health clinics.\n\nThe department needed 180,000 doses delivered to 44 clinic locations between August and October, in refrigerated shipments with temperature records for each delivery.\n\nThe supplier replaced any doses that arrived outside the required temperature range at no cost to the state.",
+      "agency": "health",
+      "category": "health-medical",
+      "status": "awarded",
+      "postedDate": "2026-01-08",
+      "deadline": "2026-02-20T14:00:00-06:00",
+      "questionsDeadline": "2026-02-02T17:00:00-06:00",
+      "estimatedValue": "Not disclosed",
+      "contractTerm": "One flu season, with two 1-year renewals",
+      "eligibility": "Bidders had to be licensed vaccine distributors able to maintain cold chain documentation for every shipment.",
+      "preBidMeeting": null,
+      "submission": "Bids were emailed to the contracting officer with the opportunity number in the subject line.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Request for Proposals",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Clinic delivery locations",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Dana Whitfield",
+        "title": "Contracting Officer",
+        "email": "dana.whitfield@example.gov",
+        "phone": "(555) 010-4412"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0075",
+      "title": "Fresh produce for school cafeterias in the eastern region",
+      "summary": "The Department of Education needed a supplier to deliver fruit and vegetables to school kitchens twice a week.",
+      "description": "The Department of Education coordinates food buying for 62 schools in the eastern part of the state.\n\nThe department needed a supplier to deliver fresh fruit and vegetables to school kitchens twice a week during the school year. Produce had to meet USDA grading standards and arrive within two days of harvest or cold storage release.\n\nThe department gave preference to bids that included produce grown in the State of Columbia, and asked suppliers to say which items were locally grown.",
+      "agency": "education",
+      "category": "food-agriculture",
+      "status": "closed",
+      "postedDate": "2025-12-02",
+      "deadline": "2026-01-23T14:00:00-06:00",
+      "questionsDeadline": "2026-01-06T17:00:00-06:00",
+      "estimatedValue": "$620,000 a year",
+      "contractTerm": "One school year, with two 1-year renewals",
+      "eligibility": "Any business could bid, including farms selling directly.",
+      "preBidMeeting": null,
+      "submission": "Bids were emailed to the contracting officer with the opportunity number in the subject line.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Invitation for Bids",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-pricing-worksheet.pdf",
+          "label": "Pricing worksheet",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Theodore Blanchard",
+        "title": "Contracting Officer",
+        "email": "theodore.blanchard@example.gov",
+        "phone": "(555) 010-7745"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0179",
+      "title": "Survey of dam safety at 30 state-owned lakes",
+      "summary": "The Department of Natural Resources needs engineers to inspect 30 small dams and report on their condition. The work involves visiting each site and writing up the findings.",
+      "description": "The Department of Natural Resources owns 30 small earthen dams that create lakes in state parks and wildlife areas. State law requires that each be inspected on a regular cycle.\n\nThe department needs a licensed engineering firm to inspect all 30 dams, review the available construction records, and produce a written report for each one describing its condition and any repairs needed.\n\nInspections happen between April and October, when water levels are stable enough to examine the structures.\n\nEach report must be sealed by a professional engineer licensed in the State of Columbia.",
+      "agency": "natural-resources",
+      "category": "professional-services",
+      "status": "open",
+      "postedDate": "2026-07-31",
+      "deadline": "2026-09-30T17:00:00-05:00",
+      "questionsDeadline": "2026-09-04T17:00:00-05:00",
+      "estimatedValue": "$185,000 to $240,000",
+      "contractTerm": "About 8 months, April through November 2027",
+      "eligibility": "Your firm must employ at least one professional engineer licensed in the State of Columbia with experience inspecting dams. The engineer who seals the reports must have personally visited each site.",
+      "preBidMeeting": null,
+      "submission": "Email your bid to hollis.tran@example.gov with \"COL-2026-0179\" in the subject line. Include the license number of the engineer who would seal the reports.\n\nYour bid must arrive by 5:00 PM Central time on September 30, 2026.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Request for Proposals",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Dam locations and inspection history",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Hollis Tran",
+        "title": "Fleet Purchasing Agent",
+        "email": "hollis.tran@example.gov",
+        "phone": "(555) 010-9963"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0182",
+      "title": "Courier service between state office buildings",
+      "summary": "The Department of Administrative Services needs a courier to move mail and packages between offices twice a day. The route is fixed.",
+      "description": "The Department of Administrative Services moves interoffice mail, payroll paperwork, and small packages between 14 state office buildings in Capitol City.\n\nThe department needs a courier to drive a fixed route twice each business day, once in the morning and once in the afternoon. Some deliveries include sealed personnel and tax records, so the driver must pass a background check.\n\nThe contractor provides the vehicle and the driver. The route takes about three hours each run.\n\nThis is a small contract and the department expects local companies and owner-operators to bid.",
+      "agency": "administrative-services",
+      "category": "transportation-logistics",
+      "status": "open",
+      "postedDate": "2026-07-23",
+      "deadline": "2026-09-02T14:00:00-05:00",
+      "questionsDeadline": null,
+      "estimatedValue": "About $48,000 a year",
+      "contractTerm": "2 years, with three 1-year renewals the state may choose to use",
+      "eligibility": "Any business may bid, including one-person companies. The driver must pass a background check and carry commercial auto insurance.",
+      "preBidMeeting": null,
+      "submission": "Email your bid to samuel.eriksen@example.gov with \"COL-2026-0182\" in the subject line.\n\nYour bid must arrive by 2:00 PM Central time on September 2, 2026.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Invitation for Bids",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Route and building list",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Samuel Eriksen",
+        "title": "Contracting Officer",
+        "email": "samuel.eriksen@example.gov",
+        "phone": "(555) 010-2015"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0185",
+      "title": "Protective vests for state patrol troopers",
+      "summary": "The Department of Public Safety needs 700 protective vests fitted to individual troopers. Each trooper will need to be measured and provided with a vest.",
+      "description": "The Department of Public Safety is replacing the protective vests worn by troopers. Vests expire on a set schedule and the current set reaches the end of its rated life next year.\n\nThe department needs about 700 vests. Each one must be individually fitted, which means sending staff to measure troopers at ten locations around the state.\n\nVests must meet the National Institute of Justice standard named in the Request for Proposals and must be delivered within 90 days of each fitting.\n\nThe department will replace any vest that does not fit correctly at no cost to the state.",
+      "agency": "public-safety",
+      "category": "office-supplies",
+      "status": "open",
+      "postedDate": "2026-08-01",
+      "deadline": "2026-10-23T14:00:00-05:00",
+      "questionsDeadline": "2026-09-25T17:00:00-05:00",
+      "estimatedValue": "$590,000 to $700,000",
+      "contractTerm": "About 10 months from first fitting to final delivery",
+      "eligibility": "Your vests must be listed as compliant on the National Institute of Justice's published list. You must be able to send fitting staff to all ten locations.",
+      "preBidMeeting": null,
+      "submission": "Email your bid to camille.deschamps@example.gov with \"COL-2026-0185\" in the subject line. Include the model number and the compliance listing for the vest you are offering.\n\nYour bid must arrive by 2:00 PM Central time on October 23, 2026.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Request for Proposals",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Fitting locations and trooper counts",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-pricing-worksheet.pdf",
+          "label": "Pricing worksheet",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Camille Deschamps",
+        "title": "Contracting Officer",
+        "email": "camille.deschamps@example.gov",
+        "phone": "(555) 010-3390"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0188",
+      "title": "Welding classes for people leaving state prisons",
+      "summary": "The Department of Corrections needs an instructor to teach welding to people preparing for release. Classes are held in a shop inside the facility.",
+      "description": "The Department of Corrections runs job training programs to help people find work after they are released.\n\nThe department needs an instructor to teach a 16-week welding course at one facility, twice a year. Classes run four days a week with about 12 students each. The department supplies the shop, the equipment, and the materials.\n\nStudents who finish should be ready to sit for an entry-level welding certification. The instructor helps arrange that testing.\n\nInstructors need a welding certification and teaching experience, and must pass a background check before entering the facility.",
+      "agency": "corrections",
+      "category": "training-education",
+      "status": "open",
+      "postedDate": "2026-07-21",
+      "deadline": "2026-09-16T17:00:00-05:00",
+      "questionsDeadline": "2026-08-26T17:00:00-05:00",
+      "estimatedValue": "About $96,000 a year",
+      "contractTerm": "2 years, with two 1-year renewals the state may choose to use",
+      "eligibility": "Individual instructors and training organizations may both bid. You must hold a current welding certification and pass a background check before entering the facility.",
+      "preBidMeeting": {
+        "datetime": "2026-08-19T13:00:00-05:00",
+        "location": "Northgate Correctional Facility, 1200 County Road 12, Northgate, Columbia 21440. Bring photo identification and arrive 30 minutes early for screening.",
+        "required": false
+      },
+      "submission": "Email your bid to ruth.kowalczyk@example.gov with \"COL-2026-0188\" in the subject line.\n\nYour bid must arrive by 5:00 PM Central time on September 16, 2026.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Request for Proposals",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Ruth Kowalczyk",
+        "title": "Contracting Officer",
+        "email": "ruth.kowalczyk@example.gov",
+        "phone": "(555) 010-1187"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0191",
+      "title": "Air quality monitoring stations at five industrial sites",
+      "summary": "The Department of Environmental Quality needs new air monitoring equipment installed at five locations. One contract covers supply, installation, and upkeep.",
+      "description": "The Department of Environmental Quality measures air quality near industrial areas and reports the results to the public.\n\nThe department needs to replace monitoring equipment at five sites. Each station measures fine particles, ozone, and sulfur dioxide, and sends readings to the department's system every hour.\n\nThe contractor supplies and installs the equipment, connects it to the department's network, and keeps it calibrated and running for the length of the contract.\n\nEquipment must be on the federal list of approved monitoring methods. The department will not accept substitutes.",
+      "agency": "environment",
+      "category": "vehicles-equipment",
+      "status": "open",
+      "postedDate": "2026-07-13",
+      "deadline": "2026-10-30T17:00:00-05:00",
+      "questionsDeadline": "2026-10-02T17:00:00-05:00",
+      "estimatedValue": "$425,000 to $520,000",
+      "contractTerm": "3 years, including installation and ongoing calibration",
+      "eligibility": "The equipment you offer must appear on the federal list of approved monitoring methods. You must be able to reach any of the five sites within 48 hours when something breaks.",
+      "preBidMeeting": {
+        "datetime": "2026-09-29T10:00:00-05:00",
+        "location": "Online. Register by email with the contracting officer to receive the link.",
+        "required": false
+      },
+      "submission": "Email your bid to fatima.oyelaran@example.gov with \"COL-2026-0191\" in the subject line.\n\nYour bid must arrive by 5:00 PM Central time on October 30, 2026.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Request for Proposals",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Site locations and network details",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-pricing-worksheet.pdf",
+          "label": "Pricing worksheet",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Fatima Oyelaran",
+        "title": "Contracting Officer",
+        "email": "fatima.oyelaran@example.gov",
+        "phone": "(555) 010-8829"
+      }
+    },
+    {
+      "solicitationNumber": "COL-2026-0194",
+      "title": "Remodel of the Fairview public health clinic",
+      "summary": "The Department of Health needs a contractor to remodel a clinic so it can serve more patients. The clinic stays open during the work.",
+      "description": "The Fairview public health clinic serves about 400 patients a week in a building that was last remodeled in 1998.\n\nThe department needs a contractor to convert storage space into four exam rooms, replace the heating and cooling system, and update the restrooms to meet accessibility requirements.\n\nThe clinic stays open during construction, so the work happens in phases. The contractor must keep dust and noise out of patient areas and keep at least one accessible restroom available at all times.\n\nThe department expects the work to take about seven months.",
+      "agency": "health",
+      "category": "construction",
+      "status": "open",
+      "postedDate": "2026-07-30",
+      "deadline": "2026-09-24T14:00:00-05:00",
+      "questionsDeadline": "2026-08-27T17:00:00-05:00",
+      "estimatedValue": "Not to exceed $1.2 million",
+      "contractTerm": "About 7 months of construction",
+      "eligibility": "You must be a licensed general contractor in the State of Columbia and carry at least $2 million in general liability insurance.\n\nBecause the clinic stays open, you must show that you have completed at least one project in an occupied medical building.",
+      "preBidMeeting": {
+        "datetime": "2026-08-31T09:00:00-05:00",
+        "location": "Fairview public health clinic, 210 Fairview Avenue, Fairview, Columbia 21220.",
+        "required": true
+      },
+      "submission": "Deliver one sealed paper bid to the Department of Health, Attention: Facilities, 1500 Health Plaza, Capitol City, Columbia 21002.\n\nYour bid must arrive by 2:00 PM Central time on September 24, 2026. Write \"COL-2026-0194\" on the outside of the envelope.",
+      "attachments": [
+        {
+          "filename": "sample-rfp.pdf",
+          "label": "Request for Proposals",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-attachment-a.pdf",
+          "label": "Attachment A: Floor plans and phasing",
+          "format": "PDF"
+        },
+        {
+          "filename": "sample-pricing-worksheet.pdf",
+          "label": "Bid schedule",
+          "format": "PDF"
+        }
+      ],
+      "contact": {
+        "name": "Dana Whitfield",
+        "title": "Contracting Officer",
+        "email": "dana.whitfield@example.gov",
+        "phone": "(555) 010-4412"
+      }
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opportunity — Columbia Bid Opportunities</title>
+<link rel="stylesheet" href="uswds/css/uswds.min.css">
+<link rel="stylesheet" href="css/custom.css">
+<script src="uswds/js/uswds-init.min.js"></script>
+</head>
+<body>
+
+<a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+<section class="usa-banner" aria-label="Official website of the State of Columbia">
+  <div class="usa-accordion">
+    <header class="usa-banner__header">
+      <div class="usa-banner__inner">
+        <div class="grid-col-auto">
+          <img class="usa-banner__header-flag" src="uswds/img/us_flag_small.png" alt="">
+        </div>
+        <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
+          <p class="usa-banner__header-text">An official website of the State of Columbia</p>
+          <p class="usa-banner__header-action">Here's how you know</p>
+        </div>
+        <button type="button" class="usa-accordion__button usa-banner__button" aria-expanded="false" aria-controls="gov-banner">
+          <span class="usa-banner__button-text">Here's how you know</span>
+        </button>
+      </div>
+    </header>
+    <div class="usa-banner__content usa-accordion__content" id="gov-banner">
+      <div class="grid-row grid-gap-lg">
+        <div class="usa-banner__guidance tablet:grid-col-6">
+          <img class="usa-banner__icon usa-media-block__img" src="uswds/img/icon-dot-gov.svg" role="img" alt="" aria-hidden="true">
+          <div class="usa-media-block__body">
+            <p><strong>Official websites use .columbia.gov</strong><br>
+            A <strong>.columbia.gov</strong> website belongs to an official government organization in the State of Columbia.</p>
+          </div>
+        </div>
+        <div class="usa-banner__guidance tablet:grid-col-6">
+          <img class="usa-banner__icon usa-media-block__img" src="uswds/img/icon-https.svg" role="img" alt="" aria-hidden="true">
+          <div class="usa-media-block__body">
+            <p><strong>Secure .columbia.gov websites use HTTPS</strong><br>
+            A <strong>lock</strong> or <strong>https://</strong> means you've safely connected to the .columbia.gov website. Share sensitive information only on official, secure websites.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<header class="usa-header usa-header--basic">
+  <div class="usa-nav-container">
+    <div class="usa-navbar">
+      <div class="usa-logo">
+        <em class="usa-logo__text"><a href="./" title="Columbia Bid Opportunities">Columbia Bid Opportunities</a></em>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+  <div class="grid-container">
+    <div class="grid-row">
+      <div class="desktop:grid-col-8">
+
+        <p class="margin-top-3">
+          <a class="usa-link" href="./">&lsaquo; Back to all opportunities</a>
+        </p>
+
+        <div id="detail-root"></div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="usa-footer usa-footer--slim">
+  <div class="usa-footer__secondary-section">
+    <div class="grid-container">
+      <p class="rfp-disclaimer">
+        This is a demonstration site. The State of Columbia is not a real state,
+        and every opportunity listed here is fictional. Do not submit a bid.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- The whole record. Sections with no data are removed entirely by detail.js. -->
+<template id="template-detail">
+  <article>
+    <p data-field="tag-wrap" hidden>
+      <span class="usa-tag" data-field="tag"></span>
+    </p>
+
+    <h1 data-field="title"></h1>
+
+    <p class="rfp-row__quiet">
+      <span class="usa-tooltip" data-position="top">
+        <span class="usa-tooltip__trigger" tabindex="0" data-field="number-trigger"></span>
+        <span class="usa-tooltip__body usa-tooltip__body--top" role="tooltip" aria-hidden="true" data-field="number-tip">The state's tracking number for this opportunity. Include it on everything you send.</span>
+      </span>
+    </p>
+
+    <div class="usa-summary-box" role="region" aria-labelledby="key-facts-heading">
+      <div class="usa-summary-box__body">
+        <h2 class="usa-summary-box__heading" id="key-facts-heading">Key facts</h2>
+        <div class="usa-summary-box__text">
+          <dl class="rfp-keyfacts">
+
+            <div class="rfp-keyfacts__row">
+              <dt>
+                <span class="usa-tooltip" data-position="top">
+                  <span class="usa-tooltip__trigger" tabindex="0" data-field="deadline-trigger">Bids due</span>
+                  <span class="usa-tooltip__body usa-tooltip__body--top" role="tooltip" aria-hidden="true" data-field="deadline-tip">Your complete bid must arrive by this exact time. Late bids are rejected, even by a minute.</span>
+                </span>
+              </dt>
+              <dd data-field="deadline"></dd>
+            </div>
+
+            <div class="rfp-keyfacts__row" data-section="questions">
+              <dt>
+                <span class="usa-tooltip" data-position="top">
+                  <span class="usa-tooltip__trigger" tabindex="0" data-field="questions-trigger">Questions due</span>
+                  <span class="usa-tooltip__body usa-tooltip__body--top" role="tooltip" aria-hidden="true" data-field="questions-tip">The last day to ask the agency about this opportunity. Answers are shared with everyone who is bidding.</span>
+                </span>
+              </dt>
+              <dd data-field="questions"></dd>
+            </div>
+
+            <div class="rfp-keyfacts__row">
+              <dt>Posted</dt>
+              <dd data-field="posted"></dd>
+            </div>
+
+            <div class="rfp-keyfacts__row">
+              <dt>Agency</dt>
+              <dd data-field="agency"></dd>
+            </div>
+
+            <div class="rfp-keyfacts__row">
+              <dt>
+                <span class="usa-tooltip" data-position="top">
+                  <span class="usa-tooltip__trigger" tabindex="0" data-field="category-trigger">Type of work</span>
+                  <span class="usa-tooltip__body usa-tooltip__body--top" role="tooltip" aria-hidden="true" data-field="category-tip">The general category this opportunity falls into. Agencies use these to help vendors find relevant work.</span>
+                </span>
+              </dt>
+              <dd data-field="category"></dd>
+            </div>
+
+            <div class="rfp-keyfacts__row" data-section="value">
+              <dt>
+                <span class="usa-tooltip" data-position="top">
+                  <span class="usa-tooltip__trigger" tabindex="0" data-field="value-trigger">Estimated value</span>
+                  <span class="usa-tooltip__body usa-tooltip__body--top" role="tooltip" aria-hidden="true" data-field="value-tip">The agency's rough guess at what this will cost. It is not a promise, and the final amount may differ.</span>
+                </span>
+              </dt>
+              <dd data-field="value"></dd>
+            </div>
+
+            <div class="rfp-keyfacts__row" data-section="term">
+              <dt>
+                <span class="usa-tooltip" data-position="top">
+                  <span class="usa-tooltip__trigger" tabindex="0" data-field="term-trigger">Contract length</span>
+                  <span class="usa-tooltip__body usa-tooltip__body--top" role="tooltip" aria-hidden="true" data-field="term-tip">How long the work is expected to last, including any renewals the agency may choose to exercise.</span>
+                </span>
+              </dt>
+              <dd data-field="term"></dd>
+            </div>
+
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <h2>What this opportunity is about</h2>
+    <div data-field="summary"></div>
+
+    <h2>What the agency needs</h2>
+    <div data-field="description"></div>
+
+    <div data-section="eligibility">
+      <h2>Who can bid</h2>
+      <div class="usa-accordion usa-accordion--bordered">
+        <h3 class="usa-accordion__heading">
+          <button type="button" class="usa-accordion__button" aria-expanded="false" data-field="eligibility-button">
+            Who can bid on this opportunity
+          </button>
+        </h3>
+        <div class="usa-accordion__content usa-prose" data-field="eligibility-panel"></div>
+      </div>
+    </div>
+
+    <div data-section="meeting">
+      <h2>Meeting before you bid</h2>
+      <div data-field="meeting"></div>
+    </div>
+
+    <h2>How to submit your bid</h2>
+    <div data-field="submission"></div>
+
+    <div data-section="attachments">
+      <h2>Documents to download</h2>
+      <ul class="usa-list" data-field="attachments"></ul>
+    </div>
+
+    <h2>Who to contact with questions</h2>
+    <p>
+      <span data-field="contact-name"></span><br>
+      <a class="usa-link" data-field="contact-email"></a><br>
+      <a class="usa-link" data-field="contact-phone"></a>
+    </p>
+  </article>
+</template>
+
+<template id="template-attachment">
+  <li>
+    <a class="usa-link" data-field="link"></a>
+    <span data-field="format"></span>
+  </li>
+</template>
+
+<template id="template-not-found">
+  <div>
+    <h1>We couldn't find that opportunity</h1>
+    <p class="usa-intro">
+      The link may be out of date, or the opportunity may have been removed.
+    </p>
+    <a class="usa-button" href="./">See all opportunities</a>
+  </div>
+</template>
+
+<template id="template-error">
+  <div class="usa-alert usa-alert--error" role="alert">
+    <div class="usa-alert__body">
+      <h2 class="usa-alert__heading">We're having trouble loading opportunities</h2>
+      <p class="usa-alert__text">
+        We're having trouble loading opportunities right now. Please refresh the
+        page to try again.
+      </p>
+    </div>
+  </div>
+</template>
+
+<script src="uswds/js/uswds.min.js"></script>
+<script src="js/format.js"></script>
+<script src="js/tooltip.js"></script>
+<script src="js/data.js"></script>
+<script src="js/detail.js"></script>
+</body>
+</html>

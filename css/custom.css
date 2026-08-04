@@ -1,0 +1,198 @@
+/* Minimal overrides. USWDS supplies everything else. */
+
+/* --- list rows --- */
+
+.rfp-row {
+  border-top: 1px solid #dfe1e2;
+  padding: 1.5rem 0;
+}
+
+.rfp-row__title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.31rem;
+}
+
+/* Quiet trailing metadata line: opportunity number and posted date. */
+.rfp-row__quiet {
+  color: #565c65;
+  font-size: 0.93rem;
+}
+
+/* --- prominent metadata list on a row --- */
+
+.rfp-meta {
+  margin: 0.75rem 0;
+}
+
+.rfp-meta dt {
+  color: #565c65;
+  font-size: 0.93rem;
+  margin-top: 0.5rem;
+}
+
+.rfp-meta dd {
+  margin-left: 0;
+  font-weight: 700;
+}
+
+/* --- detail page key facts --- */
+
+.rfp-keyfacts {
+  margin: 0;
+}
+
+.rfp-keyfacts__row {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #dfe1e2;
+}
+
+.rfp-keyfacts__row:last-child {
+  border-bottom: 0;
+}
+
+.rfp-keyfacts dt {
+  color: #565c65;
+  font-size: 0.93rem;
+}
+
+.rfp-keyfacts dd {
+  margin-left: 0;
+  font-weight: 700;
+}
+
+@media screen and (min-width: 30em) {
+  .rfp-keyfacts__row {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .rfp-keyfacts dt {
+    flex: 0 0 11rem;
+  }
+
+  .rfp-keyfacts dd {
+    flex: 1;
+  }
+}
+
+/* --- result count --- */
+
+.rfp-result-count {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* --- urgency tag --- */
+/* USWDS has no warning-colored tag, so the one custom color lives here. */
+
+.rfp-tag--urgent {
+  background-color: #936f38;
+}
+
+/* --- filter options with an info tooltip --- */
+
+.rfp-filter-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.rfp-filter-option .usa-checkbox {
+  flex: 1;
+}
+
+.rfp-filter-option > .usa-tooltip {
+  flex: 0 0 auto;
+  margin-top: 0.5rem;
+}
+
+/* 24x24 minimum target size (WCAG 2.2 AA, 2.5.8). */
+.rfp-info {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid #565c65;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.rfp-info__mark {
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #565c65;
+  line-height: 1;
+}
+
+.rfp-info:hover .rfp-info__mark {
+  color: #1a4480;
+}
+
+/* --- tooltip triggers rendered as text --- */
+/* Dotted underline marks the word as explainable without looking like a link. */
+
+.rfp-row__quiet .usa-tooltip__trigger,
+.rfp-keyfacts .usa-tooltip__trigger {
+  border-bottom: 1px dotted #565c65;
+  cursor: help;
+}
+
+/* --- keeping filter tooltips out of the panel's overflow --- */
+/* USWDS puts overflow:auto on .usa-accordion__content, which clips an
+   absolutely positioned tooltip and turns the overhang into scrollable
+   area instead. The panel is not a scrolling region here, so let it
+   overflow visibly. */
+
+.rfp-filter-panel {
+  overflow: visible;
+}
+
+/* Two fixes on one rule, both because these tooltips are built after USWDS's
+   init() has already run:
+   1. USWDS sets width:auto and white-space:pre, so a two-sentence description
+      lays out as one very long line. Cap the width and let it wrap.
+   2. USWDS centers the body with a transform it calculates in JS during
+      init(). That never happens here, so the body starts at the trigger's
+      left edge and runs off a narrow screen. Anchoring it right opens it
+      leftward, into the page.
+   The selector repeats .usa-tooltip__body to outrank .usa-tooltip__body--top. */
+.rfp-filter-option .usa-tooltip__body.usa-tooltip__body {
+  width: 15rem;
+  max-width: 15rem;
+  white-space: normal;
+  text-align: left;
+  left: auto;
+  right: 0;
+}
+
+/* The arrow is centered on the body (left:50%); with the body now right-
+   anchored, move it over the trigger instead. */
+.rfp-filter-option .usa-tooltip__body.usa-tooltip__body::after {
+  left: auto;
+  right: 0.5rem;
+  margin-left: 0;
+}
+
+/* --- footer disclaimer --- */
+
+.rfp-disclaimer {
+  max-width: 60ch;
+  margin: 0;
+}
+
+/* --- filters: sidebar on desktop, accordion on mobile --- */
+/* SPEC 8.5 forbids sticky positioning, so this is plain document flow. */
+
+@media screen and (min-width: 64em) {
+  /* Desktop: drop the accordion wrapper, always show the panel. */
+  .rfp-filter-accordion__heading {
+    display: none;
+  }
+
+  .rfp-filter-panel {
+    display: block !important;
+  }
+}

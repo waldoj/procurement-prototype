@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find work with the State of Columbia — Columbia Bid Opportunities</title>
+<link rel="stylesheet" href="uswds/css/uswds.min.css">
+<link rel="stylesheet" href="css/custom.css">
+<script src="uswds/js/uswds-init.min.js"></script>
+</head>
+<body>
+
+<a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+<section class="usa-banner" aria-label="Official website of the State of Columbia">
+  <div class="usa-accordion">
+    <header class="usa-banner__header">
+      <div class="usa-banner__inner">
+        <div class="grid-col-auto">
+          <img class="usa-banner__header-flag" src="uswds/img/us_flag_small.png" alt="">
+        </div>
+        <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
+          <p class="usa-banner__header-text">An official website of the State of Columbia</p>
+          <p class="usa-banner__header-action">Here's how you know</p>
+        </div>
+        <button type="button" class="usa-accordion__button usa-banner__button" aria-expanded="false" aria-controls="gov-banner">
+          <span class="usa-banner__button-text">Here's how you know</span>
+        </button>
+      </div>
+    </header>
+    <div class="usa-banner__content usa-accordion__content" id="gov-banner">
+      <div class="grid-row grid-gap-lg">
+        <div class="usa-banner__guidance tablet:grid-col-6">
+          <img class="usa-banner__icon usa-media-block__img" src="uswds/img/icon-dot-gov.svg" role="img" alt="" aria-hidden="true">
+          <div class="usa-media-block__body">
+            <p><strong>Official websites use .columbia.gov</strong><br>
+            A <strong>.columbia.gov</strong> website belongs to an official government organization in the State of Columbia.</p>
+          </div>
+        </div>
+        <div class="usa-banner__guidance tablet:grid-col-6">
+          <img class="usa-banner__icon usa-media-block__img" src="uswds/img/icon-https.svg" role="img" alt="" aria-hidden="true">
+          <div class="usa-media-block__body">
+            <p><strong>Secure .columbia.gov websites use HTTPS</strong><br>
+            A <strong>lock</strong> or <strong>https://</strong> means you've safely connected to the .columbia.gov website. Share sensitive information only on official, secure websites.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<header class="usa-header usa-header--basic">
+  <div class="usa-nav-container">
+    <div class="usa-navbar">
+      <div class="usa-logo">
+        <em class="usa-logo__text"><a href="./" title="Columbia Bid Opportunities">Columbia Bid Opportunities</a></em>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main-content">
+  <div class="grid-container">
+
+    <h1>Find work with the State of Columbia</h1>
+    <p class="usa-intro">Browse open opportunities to sell goods and services to state agencies.</p>
+
+    <form class="usa-search usa-search--big margin-bottom-4" role="search" id="search-form">
+      <!-- Visually hidden, not removed: SPEC 8.2 requires a real label, and the
+           search box needs an accessible name. usa-sr-only keeps it announced. -->
+      <label class="usa-sr-only" for="search-field">Search opportunities</label>
+      <input class="usa-input usa-search__input" id="search-field" type="search" name="search" autocomplete="off">
+      <button class="usa-button usa-search__submit" type="submit">
+        <span class="usa-search__submit-text">Search</span>
+      </button>
+    </form>
+
+    <div class="grid-row grid-gap">
+
+      <!-- Filters: sidebar on desktop, accordion on mobile -->
+      <div class="desktop:grid-col-4">
+        <div class="usa-accordion rfp-filter-accordion">
+          <h2 class="usa-accordion__heading rfp-filter-accordion__heading">
+            <button type="button" class="usa-accordion__button" aria-expanded="false" aria-controls="filter-panel">
+              Filter opportunities
+            </button>
+          </h2>
+          <div id="filter-panel" class="usa-accordion__content rfp-filter-panel">
+
+            <fieldset class="usa-fieldset">
+              <legend class="usa-legend usa-legend--large">Which agency</legend>
+              <ul class="usa-list usa-list--unstyled" id="agency-filters"></ul>
+            </fieldset>
+
+            <fieldset class="usa-fieldset margin-top-3">
+              <legend class="usa-legend usa-legend--large">What's being bought</legend>
+              <ul class="usa-list usa-list--unstyled" id="category-filters"></ul>
+            </fieldset>
+
+            <fieldset class="usa-fieldset margin-top-3">
+              <legend class="usa-legend usa-legend--large">Status</legend>
+              <div class="usa-radio">
+                <input class="usa-radio__input" id="status-open" type="radio" name="status" value="open" checked>
+                <label class="usa-radio__label" for="status-open">Open only</label>
+              </div>
+              <div class="usa-radio">
+                <input class="usa-radio__input" id="status-all" type="radio" name="status" value="all">
+                <label class="usa-radio__label" for="status-all">Open and closed</label>
+              </div>
+            </fieldset>
+
+            <button type="button" class="usa-button usa-button--outline margin-top-3" id="clear-filters">
+              Clear filters
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div class="desktop:grid-col-8">
+        <h2 id="results-heading" tabindex="-1" class="margin-top-0">Opportunities</h2>
+
+        <p id="result-count" class="rfp-result-count" aria-live="polite" aria-atomic="true"></p>
+
+        <div class="margin-bottom-3">
+          <label class="usa-label display-inline-block margin-right-1 margin-top-0" for="sort-select">Sort by</label>
+          <select class="usa-select display-inline-block width-auto" id="sort-select">
+            <option value="deadline" selected>Closing soonest</option>
+            <option value="posted">Recently posted</option>
+            <option value="title">Title (A–Z)</option>
+          </select>
+        </div>
+
+        <div id="error-region" hidden></div>
+
+        <ul class="usa-list usa-list--unstyled" id="results-list"></ul>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="usa-footer usa-footer--slim">
+  <div class="usa-footer__secondary-section">
+    <div class="grid-container">
+      <p class="rfp-disclaimer">
+        This is a demonstration site. The State of Columbia is not a real state,
+        and every opportunity listed here is fictional. Do not submit a bid.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- One result row. The tooltip trigger is authored in USWDS's initialized
+     shape (wrapper + body); RFP.tooltip binds show/hide after each render,
+     since USWDS only initializes what was in the DOM at load. -->
+<template id="template-rfp-row">
+  <li class="rfp-row">
+    <h3 class="rfp-row__title">
+      <a class="usa-link" href="#" data-field="title-link"></a>
+    </h3>
+    <p data-field="tag-wrap" hidden>
+      <span class="usa-tag" data-field="tag"></span>
+    </p>
+    <p data-field="summary"></p>
+    <dl class="rfp-meta">
+      <dt>Agency</dt>
+      <dd data-field="agency"></dd>
+      <dt>Bids due</dt>
+      <dd data-field="deadline"></dd>
+      <dt>Type of work</dt>
+      <dd data-field="category"></dd>
+    </dl>
+    <p class="rfp-row__quiet">
+      <span class="usa-tooltip" data-position="top">
+        <span class="usa-tooltip__trigger" tabindex="0" data-field="number-trigger"></span>
+        <span class="usa-tooltip__body usa-tooltip__body--top" role="tooltip" aria-hidden="true" data-field="number-tip">The state's tracking number for this opportunity. Include it on everything you send.</span>
+      </span>
+      <span> · </span>
+      <span data-field="posted"></span>
+    </p>
+  </li>
+</template>
+
+<template id="template-no-results">
+  <div class="usa-alert usa-alert--info">
+    <div class="usa-alert__body">
+      <h3 class="usa-alert__heading">No opportunities match what you're looking for.</h3>
+      <p class="usa-alert__text">
+        Try removing a filter or searching for a different word. If you selected
+        "Open only," there may be closed opportunities that match.
+      </p>
+      <button type="button" class="usa-button margin-top-2" data-field="clear">
+        Clear filters and start over
+      </button>
+    </div>
+  </div>
+</template>
+
+<template id="template-filter-option">
+  <li class="rfp-filter-option">
+    <div class="usa-checkbox">
+      <input class="usa-checkbox__input" type="checkbox" data-field="input">
+      <label class="usa-checkbox__label" data-field="label"></label>
+    </div>
+    <!-- Filter options are rendered after the fetch resolves, so they miss
+         USWDS's DOMContentLoaded init. Authored in the initialized shape,
+         same as the list row. -->
+    <span class="usa-tooltip" data-position="top">
+      <button type="button" class="usa-button usa-button--unstyled usa-tooltip__trigger rfp-info" data-field="info">
+        <span class="rfp-info__mark" aria-hidden="true">i</span>
+      </button>
+      <span class="usa-tooltip__body usa-tooltip__body--top" role="tooltip" aria-hidden="true" data-field="info-tip"></span>
+    </span>
+  </li>
+</template>
+
+<template id="template-error">
+  <div class="usa-alert usa-alert--error" role="alert">
+    <div class="usa-alert__body">
+      <h3 class="usa-alert__heading">We're having trouble loading opportunities</h3>
+      <p class="usa-alert__text">
+        We're having trouble loading opportunities right now. Please refresh the
+        page to try again.
+      </p>
+    </div>
+  </div>
+</template>
+
+<script src="uswds/js/uswds.min.js"></script>
+<script src="js/format.js"></script>
+<script src="js/tooltip.js"></script>
+<script src="js/data.js"></script>
+<script src="js/list.js"></script>
+</body>
+</html>
