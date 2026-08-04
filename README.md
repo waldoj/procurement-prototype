@@ -113,10 +113,6 @@ written rather than edited to match.
    This satisfies the actual requirement behind §8.6 — tooltips that work by
    keyboard in dynamically rendered rows — by a different mechanism.
 
-The category `it-software` displays as **"Information technology"**, per the
-normative table in `DATA-SCHEMA.md` §3.2. Note that §3.2's own example object,
-the §7 worked example, and the `SPEC.md` §4.1 and §5.2 wireframes all show "IT
-and software" instead.
 
 ## Verifying
 

@@ -68,7 +68,7 @@
       "description": "New buildings, road work, bridges, renovations, and demolition."
     },
     {
-      "id": "it-software",
+      "id": "it",
       "name": "Information technology",
       "description": "Computers, networks, software, cybersecurity, and technical support."
     },
@@ -120,7 +120,7 @@
       "summary": "The Department of Health needs a company to run and maintain the computer networks at 14 rural clinics. The work covers the equipment, the internet connections, and day-to-day troubleshooting.",
       "description": "The Department of Health operates 14 clinics in rural parts of the state. Each clinic has between 5 and 30 staff members who need reliable internet and network access to see patients, look up records, and bill for services.\n\nRight now, each clinic manages its own equipment, and service is uneven. The department wants to hire one company to take over all 14 sites and provide consistent service across them.\n\nThe work includes supplying and installing network equipment, managing internet connections at each site, monitoring the networks for problems, and responding when something breaks. The department expects a four-hour response time during business hours and next-business-day response otherwise.\n\nPrevious government experience is not required. Bidders do need to show that they have run networks at multiple locations at once.",
       "agency": "health",
-      "category": "it-software",
+      "category": "it",
       "status": "open",
       "postedDate": "2026-06-24",
       "deadline": "2026-08-07T14:00:00-05:00",
@@ -499,7 +499,7 @@
       "summary": "The Department of Public Safety needs body cameras for 640 troopers, plus a system to store the video. One contract covers both, along with staff training.",
       "description": "The Department of Public Safety is replacing the body cameras its troopers wear. The current cameras are five years old and no longer supported.\n\nThe department needs 640 cameras, the docks that charge them and upload video, and a system to store and manage the recordings. Video must be searchable by trooper, date, and case number, and the system must keep a record of everyone who views a file.\n\nStorage must be located in the United States and must meet the criminal justice security rules named in the Request for Proposals.\n\nThe contract also covers training department staff on the system and providing support for its full length.",
       "agency": "public-safety",
-      "category": "it-software",
+      "category": "it",
       "status": "open",
       "postedDate": "2026-07-16",
       "deadline": "2026-10-09T17:00:00-05:00",
@@ -582,7 +582,7 @@
       "summary": "The Department of Revenue needed 900 laptops and docking stations to replace aging equipment.",
       "description": "The Department of Revenue replaced the laptops used by its auditors and processing staff.\n\nThe department needed 900 laptops, docking stations, and monitors, delivered in batches over six months. Each machine had to arrive with the department's standard software image already installed.\n\nThe supplier also took back the old equipment and provided certificates showing the drives had been securely erased.",
       "agency": "revenue",
-      "category": "it-software",
+      "category": "it",
       "status": "closed",
       "postedDate": "2026-02-10",
       "deadline": "2026-03-27T14:00:00-05:00",
