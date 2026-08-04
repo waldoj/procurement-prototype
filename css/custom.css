@@ -90,6 +90,32 @@
   background-color: #936f38;
 }
 
+/* --- filter sidebar panel --- */
+/* Tinted to match .usa-summary-box, whose values these are. Overrides
+   .usa-accordion__content's white background and tighter padding; both are
+   single-class selectors, so load order settles it. */
+
+.rfp-filter-panel {
+  background-color: #e7f6f8;
+  border: 1px #99deea solid;
+  border-radius: 0.25rem;
+  padding: 1.5rem;
+}
+
+/* USWDS puts a white background on these containers, which would show as
+   white blocks against the tint. The box itself is drawn by the label's
+   ::before and stays white, as it should. */
+.rfp-filter-panel .usa-checkbox,
+.rfp-filter-panel .usa-radio {
+  background: transparent;
+}
+
+/* Legends carry margin-top:1.5rem, which doubles up with the panel's own
+   padding on the first group. */
+.rfp-filter-panel .usa-fieldset:first-child .usa-legend {
+  margin-top: 0;
+}
+
 /* --- filter options with an info tooltip --- */
 
 .rfp-filter-option {
