@@ -122,18 +122,18 @@
       "agency": "health",
       "category": "it",
       "status": "open",
-      "postedDate": "2026-06-24",
-      "deadline": "2026-08-07T14:00:00-05:00",
-      "questionsDeadline": "2026-07-24T17:00:00-05:00",
+      "postedDate": "2026-07-01",
+      "deadline": "2026-08-14T14:00:00-05:00",
+      "questionsDeadline": "2026-07-31T17:00:00-05:00",
       "estimatedValue": "$400,000 to $600,000 over 3 years",
       "contractTerm": "3 years, with two 1-year renewals the state may choose to use",
       "eligibility": "Any business may bid. You must be registered to do business in the State of Columbia before a contract is signed, but you do not need to be registered to submit a bid.\n\nYou will need to show that your company has managed networks at three or more locations at the same time, and that you carry at least $1 million in general liability insurance.",
       "preBidMeeting": {
-        "datetime": "2026-07-15T10:00:00-05:00",
+        "datetime": "2026-07-22T10:00:00-05:00",
         "location": "Online. Register by email with the contracting officer to receive the link.",
         "required": false
       },
-      "submission": "Email your complete bid to dana.whitfield@example.gov with \"COL-2026-0142\" in the subject line.\n\nYour bid must arrive by 2:00 PM Central time on August 7, 2026. The department goes by the time the email arrives on its server, not the time you sent it. Bids that arrive late are not opened.",
+      "submission": "Email your complete bid to dana.whitfield@example.gov with \"COL-2026-0142\" in the subject line.\n\nYour bid must arrive by 2:00 PM Central time on August 14, 2026. The department goes by the time the email arrives on its server, not the time you sent it. Bids that arrive late are not opened.",
       "attachments": [
         {
           "filename": "sample-rfp.pdf",
@@ -166,14 +166,14 @@
       "agency": "transportation",
       "category": "transportation-logistics",
       "status": "open",
-      "postedDate": "2026-07-06",
-      "deadline": "2026-08-10T14:00:00-05:00",
+      "postedDate": "2026-07-13",
+      "deadline": "2026-08-17T14:00:00-05:00",
       "questionsDeadline": null,
       "estimatedValue": "Depends on how much is ordered",
       "contractTerm": "One winter season, October 2026 through April 2027",
       "eligibility": "Any business may bid. You must be able to show that you can deliver at least 500 tons within 48 hours of a request.",
       "preBidMeeting": null,
-      "submission": "Mail two paper copies of your bid to the Department of Transportation, Attention: Purchasing, 400 State Street, Room 210, Capitol City, Columbia 21001.\n\nYour bid must arrive by 2:00 PM Central time on August 10, 2026. A postmark is not enough. The department opens bids in public that afternoon, and you are welcome to attend.",
+      "submission": "Mail two paper copies of your bid to the Department of Transportation, Attention: Purchasing, 400 State Street, Room 210, Capitol City, Columbia 21001.\n\nYour bid must arrive by 2:00 PM Central time on August 17, 2026. A postmark is not enough. The department opens bids in public that afternoon, and you are welcome to attend.",
       "attachments": [
         {
           "filename": "sample-rfp.pdf",
