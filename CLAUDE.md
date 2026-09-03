@@ -18,8 +18,14 @@ tags sharing a single `solicitations` global. No `import`/`export`, no `npm inst
 bundler, no test runner, no linter config. If you find yourself writing a
 `package.json`, stop.
 
-**USWDS is vendored, not CDN-linked.** Download the USWDS dist into `uswds/`
-and reference it with relative paths.
+**Both design systems are vendored, not CDN-linked.** USWDS lives in `uswds/`,
+New Jersey's Grove theme in `njwds/`. Reference both with relative paths.
+
+`njwds/` deliberately holds only `css/`, plus the 18 fonts and 33 images its
+stylesheet actually references — not the whole 19 MB dist. There is no
+`njwds/js/`: Grove's `uswds.min.js` and `uswds-init.min.js` are byte-identical
+to the vendored USWDS ones, so the scripts are shared. Re-verify that if you
+ever update Grove.
 
 **Markup lives in HTML, not in JavaScript.** Repeated structures are
 `<template>` elements, cloned and populated. Do not build HTML with template
@@ -30,6 +36,14 @@ A leading `/` in any `src`, `href`, or `fetch` breaks the site.
 
 **Duplicate the chrome.** Header, banner, and footer are copy-pasted into all
 three HTML files. Do not build an include mechanism. Three copies is correct.
+
+**Never hardcode a color in `css/custom.css`.** USWDS 3 exposes no custom
+properties, so a literal hex pins that rule to one theme and it will not move
+when the design system is switched. Use the `var(--rfp-*)` tokens declared at
+the top of the file, and source any new token's value from that system's own
+`.bg-<token>` utility class. `SPEC.md` §3.4 has the details, including the two
+traps: some tokens are identical in both systems (so building on them changes
+nothing), and a foreground/background pair can invert between them.
 
 **Labels are specified, not invented.** `SPEC.md` §7.2 and §7.3 give the exact
 display strings and tooltip text. Use them verbatim. They were written to be
@@ -48,6 +62,8 @@ conditions that cannot occur in a static prototype. Write the specific version.
 | Wireframes | `SPEC.md` §4.1, §5.2 |
 | Exact UI text and labels | `SPEC.md` §7 |
 | Accessibility requirements | `SPEC.md` §8 |
+| Design-system switcher | `SPEC.md` §3.3, `js/theme.js` |
+| Color tokens | `SPEC.md` §3.4, top of `css/custom.css` |
 | Done checklist | `SPEC.md` §10 |
 | JSON shape | `DATA-SCHEMA.md` §1–3 |
 | Worked example record | `DATA-SCHEMA.md` §7 |

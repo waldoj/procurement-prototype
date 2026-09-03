@@ -1,9 +1,46 @@
-/* Minimal overrides. USWDS supplies everything else. */
+/* Minimal overrides. The design system supplies everything else. */
+
+/* --- theme color tokens --- */
+/* USWDS 3 compiles its Sass to literal hex, so there are no custom properties
+   to inherit. These are ours. Every value below is copied from that design
+   system's own `.bg-<token>` utility class, so the custom layer moves with the
+   theme instead of pinning it.
+   
+   Only some of the palette differs between the two: the primary and
+   accent-warm ramps, base-lightest, base-light, and base-darkest. base-dark,
+   base-lighter, and the info/warning/error/success colors are identical in
+   both, so tokens built on those are listed once and simply do not change.
+   That is Grove's choice, not an omission here.
+   
+   `data-theme` is set on <html> by js/theme.js before first paint. The :root
+   values are USWDS, so the page is correct even if that never runs. */
+
+:root {
+  --rfp-panel-bg: #d9e8f6;      /* primary-lighter */
+  --rfp-panel-border: #73b3e7;  /* primary-light   */
+  --rfp-accent-text: #1a4480;   /* primary-dark    */
+  --rfp-urgent-bg: #c05600;     /* accent-warm-dark */
+  --rfp-urgent-text: #ffffff;
+  --rfp-rule: #dfe1e2;          /* base-lighter    */
+  --rfp-quiet-text: #565c65;    /* base-dark       */
+}
+
+[data-theme="njwds"] {
+  --rfp-panel-bg: #cfe8ff;
+  --rfp-panel-border: #a1d3ff;
+  --rfp-accent-text: #005ea2;
+  /* Grove's accent-warm ramp is a cream rather than USWDS's orange, so the
+     text on it has to flip to dark: #dec69a with white is 1.66:1. */
+  --rfp-urgent-bg: #dec69a;
+  --rfp-urgent-text: #1c1d1f;
+  --rfp-rule: #dfe1e2;
+  --rfp-quiet-text: #565c65;
+}
 
 /* --- list rows --- */
 
 .rfp-row {
-  border-top: 1px solid #dfe1e2;
+  border-top: 1px solid var(--rfp-rule);
   padding: 1.5rem 0;
 }
 
@@ -15,7 +52,7 @@
 
 /* Quiet trailing metadata line: opportunity number and posted date. */
 .rfp-row__quiet {
-  color: #565c65;
+  color: var(--rfp-quiet-text);
   font-size: 0.93rem;
 }
 
@@ -26,7 +63,7 @@
 }
 
 .rfp-meta dt {
-  color: #565c65;
+  color: var(--rfp-quiet-text);
   font-size: 0.93rem;
   margin-top: 0.5rem;
 }
@@ -44,7 +81,7 @@
 
 .rfp-keyfacts__row {
   padding: 0.5rem 0;
-  border-bottom: 1px solid #dfe1e2;
+  border-bottom: 1px solid var(--rfp-rule);
 }
 
 .rfp-keyfacts__row:last-child {
@@ -52,7 +89,7 @@
 }
 
 .rfp-keyfacts dt {
-  color: #565c65;
+  color: var(--rfp-quiet-text);
   font-size: 0.93rem;
 }
 
@@ -84,20 +121,25 @@
 }
 
 /* --- urgency tag --- */
-/* USWDS has no warning-colored tag, so the one custom color lives here. */
+/* Neither design system has a warning-colored tag, so this one borrows the
+   theme's accent-warm-dark. The two systems disagree sharply here — USWDS is
+   a dark orange, Grove a pale cream — so the text color is paired with it. */
 
 .rfp-tag--urgent {
-  background-color: #936f38;
+  background-color: var(--rfp-urgent-bg);
+  color: var(--rfp-urgent-text);
 }
 
 /* --- filter sidebar panel --- */
-/* Tinted to match .usa-summary-box, whose values these are. Overrides
-   .usa-accordion__content's white background and tighter padding; both are
-   single-class selectors, so load order settles it. */
+/* Tinted with the theme's own light primary. This used to copy
+   .usa-summary-box, but both systems set that from info-lighter, which they
+   share — so the panel never changed. Overrides .usa-accordion__content's
+   white background and tighter padding; both are single-class selectors, so
+   load order settles it. */
 
 .rfp-filter-panel {
-  background-color: #e7f6f8;
-  border: 1px #99deea solid;
+  background-color: var(--rfp-panel-bg);
+  border: 1px var(--rfp-panel-border) solid;
   border-radius: 0.25rem;
   padding: 1.5rem;
 }
@@ -138,7 +180,7 @@
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;
-  border: 1px solid #565c65;
+  border: 1px solid var(--rfp-quiet-text);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -149,12 +191,12 @@
   font-size: 0.8rem;
   font-weight: 700;
   font-style: italic;
-  color: #565c65;
+  color: var(--rfp-quiet-text);
   line-height: 1;
 }
 
 .rfp-info:hover .rfp-info__mark {
-  color: #1a4480;
+  color: var(--rfp-accent-text);
 }
 
 /* --- tooltip triggers rendered as text --- */
@@ -162,7 +204,7 @@
 
 .rfp-row__quiet .usa-tooltip__trigger,
 .rfp-keyfacts .usa-tooltip__trigger {
-  border-bottom: 1px dotted #565c65;
+  border-bottom: 1px dotted var(--rfp-quiet-text);
   cursor: help;
 }
 
@@ -221,4 +263,37 @@
   .rfp-filter-panel {
     display: block !important;
   }
+}
+
+/* --- demo bar: design-system switcher --- */
+/* A demonstration control, not site chrome (SPEC 8.7). Deliberately NOT
+   tokenized: it is the one element that should hold still while everything
+   below it changes, so it stays a fixed mid-slate under both themes.
+
+   The value matters. This bar was #1b1b1b, which sits directly above the
+   government banner — and Grove's banner is #1c1d1f, a contrast ratio of
+   1.02 against it. The two merged into one black block and hid the most
+   visible change Grove makes. base-dark is 5.92 against the USWDS banner
+   (#f0f0f0) and 2.50 against Grove's, so the boundary reads under both. */
+
+.rfp-demo-bar {
+  background-color: #565c65;
+  color: #ffffff;
+  padding: 0.75rem 0;
+  border-bottom: 3px solid #1b1b1b;
+}
+
+.rfp-demo-bar__label {
+  display: inline-block;
+  margin-top: 0;
+  margin-right: 0.5rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.rfp-demo-bar__select {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  margin-top: 0;
 }

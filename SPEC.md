@@ -40,7 +40,8 @@ anticipation of them.
 | Frontend framework | None. No React, Vue, or Svelte. |
 | JavaScript | Vanilla ES2020+, loaded via plain `<script>` tags. **No ES modules, no `import`/`export`, no bundler.** |
 | Design system | U.S. Web Design System (USWDS), **vendored into the repository**. No CDN links. |
-| CSS | Stock USWDS theme. Custom CSS only where USWDS provides nothing; keep it in one small `css/custom.css`. |
+| Second design system | New Jersey's "Grove" (`@newjersey/njwds`, MIT), a USWDS build with a New Jersey theme, **also vendored**. Selectable at runtime; see §3.3. |
+| CSS | Stock themes, unmodified. Custom CSS only where the design system provides nothing; keep it in one small `css/custom.css`. It must not hardcode color literals — see §3.4. |
 | Data | A single JSON file, `data/solicitations.json`, fetched at runtime. |
 | Accessibility | WCAG 2.2 Level AA, to the greatest plausible extent. See §8. |
 | Browser support | Current evergreen browsers. No polyfills, no transpilation. |
@@ -58,7 +59,8 @@ anticipation of them.
 │   ├── data.js           Fetch + cache + lookup
 │   ├── format.js         Date, currency, and label formatting helpers
 │   ├── list.js           List page controller
-│   └── detail.js         Detail page controller
+│   ├── detail.js         Detail page controller
+│   └── theme.js          Design-system switcher (loads in <head>; see §3.3)
 ├── data/
 │   └── solicitations.json         All data (see DATA-SCHEMA.md)
 ├── documents/            Placeholder PDFs
@@ -66,6 +68,7 @@ anticipation of them.
 │   ├── sample-attachment-a.pdf
 │   └── sample-pricing-worksheet.pdf
 ├── uswds/                Vendored USWDS dist (css/, js/, img/, fonts/)
+├── njwds/                Vendored Grove theme (css/, img/, fonts/ — no js/)
 ├── SPEC.md
 ├── DATA-SCHEMA.md
 ├── CLAUDE.md
@@ -100,6 +103,11 @@ Load order is fixed and must be respected in the HTML:
 ```
 
 Scripts go at the end of `<body>`. Controllers initialize on `DOMContentLoaded`.
+
+`js/theme.js` is the one exception: it loads in `<head>`, before the USWDS
+init script, because it must set the stylesheet `href` before first paint or a
+stored theme choice shows as a flash of the wrong design system. It still
+follows every other rule here — one IIFE, one property (`RFP.theme`).
 
 USWDS's own JS (`uswds/js/uswds.min.js`) loads before the application scripts.
 Note that USWDS initializes its components against the DOM present at load, so
@@ -153,6 +161,61 @@ Chrome consists of:
   linking to `/`. No navigation links (there is nowhere else to go).
 - **Footer** — USWDS slim footer. Contains a plain-text disclaimer that this is
   a demonstration site with fabricated data. See §7.1.
+
+### 3.3 Design-system switcher
+
+A demonstration control, duplicated into all three pages along with the rest of
+the chrome. It swaps the `href` of a single themed `<link id="theme-stylesheet">`
+between the two vendored design systems and does nothing else.
+
+- It changes **CSS only.** Markup does not change. Grove ships its own
+  `nj-banner` component with a state seal; this prototype does not use it. The
+  demonstration is "these pages, restyled," not "these pages rebuilt in New
+  Jersey's system."
+- Both vendored stylesheets are USWDS builds carrying the same `usa-*` class
+  names, which is what makes the swap a one-line change.
+- Grove's `dist/js/uswds.min.js` and `uswds-init.min.js` are byte-identical to
+  the ones in `uswds/js/`, so there is no second copy of the scripts and nothing
+  to swap. If Grove is ever updated, re-check that before assuming it still holds.
+- The choice persists in `localStorage` under `rfp-theme`, so it survives
+  navigation between the list and detail pages.
+- The bar sits **after** the skip link in DOM order and before the banner. It
+  renders above the banner, but the skip link stays the first tab stop (§8.1).
+- Only these two named themes are accepted; a stored value that is not one of
+  them falls back to USWDS rather than reaching a stylesheet `href`.
+
+Wording is in §7.1. Accessibility obligations are in §8.2 (the select carries a
+real visible label) and §8.7 (what this control is not).
+
+### 3.4 Color tokens in `css/custom.css`
+
+USWDS 3 compiles its Sass to literal hex and exposes no custom properties, so
+custom CSS that hardcodes a color silently pins itself to one theme.
+
+`custom.css` therefore declares its own tokens twice — once on `:root` (USWDS)
+and once under `[data-theme="njwds"]` (Grove) — and every custom rule uses
+`var(--rfp-*)`. `js/theme.js` sets `data-theme` on `<html>` in the same call
+that swaps the stylesheet, before first paint. The `:root` values are USWDS, so
+the page is still correct if the script never runs.
+
+**Take each value from that design system's own `.bg-<token>` utility class.**
+Do not eyeball it and do not invent one.
+
+Two rules that follow from this:
+
+- **Not every token differs.** The two systems share `base-dark`,
+  `base-lighter`, and the info/warning/error/success colors, and differ on the
+  primary and accent-warm ramps, `base-lightest`, `base-light`, and
+  `base-darkest`. A custom surface built on a shared token will not change when
+  the theme does. If a surface is *meant* to carry the theme's identity, build
+  it on the primary ramp.
+- **Contrast is per theme, and pairs can invert.** USWDS `accent-warm-dark` is
+  a dark orange that takes white text; Grove's is a pale cream where white
+  fails at 1.66:1. Where that happens, tokenize the foreground alongside the
+  background and check both themes.
+
+The demo bar (§3.3) is the deliberate exception: it is fixed, because it is the
+one element that should hold still while the rest of the page changes.
 
 ## 4. The list page (`index.html`)
 
@@ -448,6 +511,11 @@ See `DATA-SCHEMA.md` for the full schema. Behavioral requirements:
     means you've safely connected to the .example.gov website. Share
     sensitive information only on official, secure websites.
 
+**Design-system switcher (demo bar, above the banner):**
+
+- Label: `Design system`
+- Options, in order: `U.S. Web Design System` (default), `New Jersey — Grove`
+
 **Footer disclaimer (required, plain and unmissable):**
 
 > This is a demonstration site. The State of Columbia is not a real state, and
@@ -599,6 +667,12 @@ keyboard, not by eye — a tooltip that only responds to hover is a failure.
 Do not add an accessibility widget, a font-size switcher, or a contrast
 toggle. The browser does these better.
 
+The design-system switcher (§3.3) is not an exception to this. It is a
+demonstration control for showing the same information architecture under a
+different state's theme, not an affordance offered to users of the site — which
+is why it sits outside the site chrome rather than within it. It must not grow
+into a preferences panel.
+
 ## 9. Placeholder documents
 
 Generate three small PDFs in `documents/`. Every record's attachments point at
@@ -626,7 +700,16 @@ demonstration site and contains no real solicitation. Keep each under ~50 KB.
 - [ ] `detail.html` with a missing or bogus `id` renders the not-found view.
 - [ ] `404.html` exists and carries site chrome.
 - [ ] All three placeholder PDFs download.
-- [ ] Tooltips work by keyboard on both pages, including in dynamic rows.
+- [ ] Tooltips work by keyboard on both pages, including in dynamic rows,
+      **under both design systems**.
+- [ ] The design-system switcher changes the theme on all three pages, persists
+      across navigation, and shows no flash of the previous theme on reload.
+- [ ] Under Grove, no vendored font or image 404s.
+- [ ] Switching the theme changes color, not just typeface: the banner, the
+      buttons, the filter panel, and the urgency tag all move.
+- [ ] `css/custom.css` contains no color literal outside the token blocks and
+      the demo bar.
+- [ ] Text contrast checked under **both** themes, not just the default.
 - [ ] Every label matches §7.2 verbatim.
 - [ ] No banned jargon (§7.4) appears in UI chrome.
 - [ ] Keyboard-only pass: reach and operate every control, skip link works.

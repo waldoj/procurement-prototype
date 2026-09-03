@@ -4,13 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Columbia Bid Opportunities</title>
-<link rel="stylesheet" href="uswds/css/uswds.min.css">
+<link id="theme-stylesheet" rel="stylesheet" href="uswds/css/uswds.min.css">
 <link rel="stylesheet" href="css/custom.css">
+<script src="js/theme.js"></script>
 <script src="uswds/js/uswds-init.min.js"></script>
 </head>
 <body>
 
 <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+<div class="rfp-demo-bar">
+  <div class="grid-container">
+    <label class="usa-label rfp-demo-bar__label" for="theme-select">Design system</label>
+    <select class="usa-select rfp-demo-bar__select" id="theme-select">
+      <option value="uswds">U.S. Web Design System</option>
+      <option value="njwds">New Jersey — Grove</option>
+    </select>
+  </div>
+</div>
 
 <section class="usa-banner" aria-label="Official website of the State of Columbia">
   <div class="usa-accordion">
