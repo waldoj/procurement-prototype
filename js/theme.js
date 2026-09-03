@@ -36,6 +36,9 @@
     // custom.css keys its color tokens off this. Set on <html> rather than
     // <body>, which does not exist yet when this runs in <head>.
     document.documentElement.setAttribute("data-theme", name);
+    // Undefined during the head phase, when there is no body to walk yet;
+    // statename.js does its own first pass at DOMContentLoaded.
+    if (RFP.stateName) RFP.stateName.apply();
   }
 
   // Private-mode and blocked-storage browsers throw on access rather than

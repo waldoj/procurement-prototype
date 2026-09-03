@@ -175,6 +175,7 @@
 
     // Rendered after load, so USWDS never saw these tooltips (SPEC 8.6).
     RFP.tooltip.bind(root);
+    RFP.stateName.apply();
   }
 
   function renderNotFound() {
@@ -182,6 +183,7 @@
     root.replaceChildren(
       document.getElementById("template-not-found").content.cloneNode(true)
     );
+    RFP.stateName.apply();
   }
 
   function showError(error) {

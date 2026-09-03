@@ -196,8 +196,24 @@ between the vendored design systems and does nothing else.
 - Only these two named themes are accepted; a stored value that is not one of
   them falls back to USWDS rather than reaching a stylesheet `href`.
 
-Wording is in §7.1. Accessibility obligations are in §8.2 (the select carries a
-real visible label) and §8.7 (what this control is not).
+- **The state name follows the theme.** `js/statename.js` rewrites `Columbia`
+  in the rendered text to `Maryland` or `New Jersey` when those systems are
+  selected, so the demonstration reads as one site restyled rather than as
+  stock USWDS wearing a state palette. It is a `TreeWalker` over text nodes
+  plus two attributes (the banner's `aria-label`, the logo link's `title`) and
+  `document.title` — no `innerHTML`, and the JSON is never mutated. Each pass
+  rewrites *any* of the three names to the current one, so it is idempotent and
+  switching state-to-state needs no memory of the original text. The
+  `.rfp-demo-bar` subtree is skipped: the switcher's own option labels are two
+  of these state names, and rewriting them would collapse the control into
+  three identical choices. It is deliberately not comprehensive — solicitation
+  numbers keep their `COL-` prefix, and the fabricated ZIP codes and "Capitol
+  City" do not move. Renderers call `RFP.stateName.apply()` after they write to
+  the DOM, since their text arrives from the JSON after the chrome's first pass.
+
+Wording is in §7.1, where the footer disclaimer must not name a state for this
+reason. Accessibility obligations are in §8.2 (the select carries a real visible
+label) and §8.7 (what this control is not).
 
 ### 3.4 Color tokens in `css/custom.css`
 
@@ -560,8 +576,13 @@ See `DATA-SCHEMA.md` for the full schema. Behavioral requirements:
 
 **Footer disclaimer (required, plain and unmissable):**
 
-> This is a demonstration site. The State of Columbia is not a real state, and
-> every opportunity listed here is fictional. Do not submit a bid.
+> This is a demonstration site. It is not affiliated with any real government,
+> and every opportunity listed here is fictional. Do not submit a bid.
+
+The disclaimer must not name a state. The switcher rewrites the state name
+(3.3), so a sentence asserting that a named state is not real becomes false the
+moment the page is themed as Maryland or New Jersey — which is exactly when an
+unmissable disclaimer matters most.
 
 ### 7.2 Field labels
 

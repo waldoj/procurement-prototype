@@ -202,6 +202,7 @@
 
     // Rows are new DOM every render; their tooltips need binding (SPEC 8.6).
     RFP.tooltip.bind(el.list);
+    RFP.stateName.apply();
   }
 
   // --- events -------------------------------------------------------------
