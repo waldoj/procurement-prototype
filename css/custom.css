@@ -51,6 +51,28 @@
   --rfp-quiet-text: #565c65;
 }
 
+/* --- federal banner: USWDS only --- */
+/* The "official website of the State of ..." bar is the federal government
+   banner. Under a state's own design system it is the wrong chrome, so it is
+   hidden for every theme except USWDS.
+
+   `[data-theme]:not(...)` rather than `:not([data-theme="uswds"])`: the
+   attribute is absent until js/theme.js runs, and with scripting off it never
+   arrives. Requiring the attribute to be present keeps the banner visible in
+   that case, which is the correct USWDS default. */
+
+[data-theme]:not([data-theme="uswds"]) .usa-banner__header {
+  display: none;
+}
+
+/* The header carries the only control that collapses #gov-banner, so if the
+   banner happened to be open at the moment of the switch its guidance panel
+   would be left behind with nothing to close it. */
+
+[data-theme]:not([data-theme="uswds"]) .usa-banner__content {
+  display: none;
+}
+
 /* --- Maryland banner compensation --- */
 /* MDWDS 0.50.2 restyles the banner as a single inline run — it sets the flag
    to `float:none` and the header text to `display:inline` — which assumes its
