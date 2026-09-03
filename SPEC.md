@@ -154,6 +154,11 @@ Header, banner, and footer markup is **duplicated verbatim** in `index.html`,
 `detail.html`, and `404.html`. Do not inject it with JavaScript. Do not build a
 shared-include mechanism. Three copies is correct here.
 
+Every page also carries `<meta name="robots" content="noindex, nofollow">`.
+This is a demonstration site full of fabricated solicitations; it must not turn
+up in search results. Duplicated into all three files like the rest of the
+chrome.
+
 Chrome consists of:
 
 - **Banner** — the USWDS government banner component, with wording adapted for

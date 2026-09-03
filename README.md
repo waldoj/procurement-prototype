@@ -89,6 +89,12 @@ the three HTML files, and add one token block in `css/custom.css`.
 Grove is vendored under the MIT license (`njwds/LICENSE`); Maryland publishes no
 license with MDWDS. Neither has a `js/` directory — see `SPEC.md` §3.3 for why.
 
+**The federal banner only appears under USWDS.** The "official website of the
+State of ..." bar is federal chrome and does not belong under a state's own
+design system, so it is hidden for Grove and Maryland. Its content panel is
+hidden with it — the header holds the only control that closes the panel, so
+otherwise expanding the banner and then switching themes would strand it open.
+
 **Maryland needs a compensation layer.** Its banner CSS is written for its own
 `.maryland-banner` markup, and against the USWDS banner markup used here it
 collapsed: the flag and the text column both computed to zero width, the
@@ -111,6 +117,11 @@ them. The vendored CSS is left byte-for-byte as shipped rather than patched.
 
 Push to a repository and turn on Pages (Settings → Pages → deploy from branch).
 No build step and no Actions workflow are needed — the files are served as-is.
+
+Every page carries `<meta name="robots" content="noindex, nofollow">` so the
+fabricated opportunities never reach search results. If you deploy this
+somewhere that serves a `robots.txt`, add a matching `Disallow: /` there too —
+the meta tag only helps once a crawler has already fetched the page.
 
 `.nojekyll` is present and must stay. Without it, Pages runs the files through
 Jekyll, which skips directories beginning with an underscore. USWDS ships those
