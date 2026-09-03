@@ -22,7 +22,8 @@
   // reaching a stylesheet href unchecked.
   var SHEETS = {
     uswds: "uswds/css/uswds.min.css",
-    njwds: "njwds/css/styles.css"
+    njwds: "njwds/css/styles.css",
+    mdwds: "mdwds/css/mdwds.min.css"
   };
 
   var current = DEFAULT;

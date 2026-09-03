@@ -25,6 +25,20 @@
   --rfp-quiet-text: #565c65;    /* base-dark       */
 }
 
+/* Maryland keeps USWDS's primary ramp and only re-themes secondary and
+   accent-warm, so on these pages it differs from stock USWDS in exactly one
+   place: the urgency tag. That is Maryland's design, not a vendoring mistake. */
+
+[data-theme="mdwds"] {
+  --rfp-panel-bg: #d9e8f6;
+  --rfp-panel-border: #73b3e7;
+  --rfp-accent-text: #1a4480;
+  --rfp-urgent-bg: #936f38;     /* accent-warm-dark, Maryland's gold-brown */
+  --rfp-urgent-text: #ffffff;
+  --rfp-rule: #dfe1e2;
+  --rfp-quiet-text: #565c65;
+}
+
 [data-theme="njwds"] {
   --rfp-panel-bg: #cfe8ff;
   --rfp-panel-border: #a1d3ff;
@@ -35,6 +49,85 @@
   --rfp-urgent-text: #1c1d1f;
   --rfp-rule: #dfe1e2;
   --rfp-quiet-text: #565c65;
+}
+
+/* --- Maryland banner compensation --- */
+/* MDWDS 0.50.2 restyles the banner as a single inline run — it sets the flag
+   to `float:none` and the header text to `display:inline` — which assumes its
+   own `.maryland-banner` markup, without the USWDS grid columns this
+   prototype's banner uses.
+
+   Against USWDS banner markup that produces a circular collapse. The flag
+   loses its float, so it stays an inline replaced element; `img{max-width:100%}`
+   then resolves against a parent whose width depends on the flag itself, and
+   both settle at zero. The text column collapses the same way, to its 1px
+   min-width, and wraps one character per line — a ~900px tall banner.
+
+   Two fixes, verified in Chrome at 1280/700/375: let the columns grow rather
+   than depend on an intrinsic width that resolves to zero, and free the flag
+   from the percentage max-width. Scoped to the theme; the others are untouched.
+   Measured banner height goes 904px -> 40px, flag 0px -> 16px. */
+
+/* An explicit width, because the intrinsic one resolves to zero here and the
+   flag ends up printed on top of the sentence. 1.5rem is the flag's own 1rem
+   plus the 0.5rem gap restored below — the same 24px USWDS computes. */
+[data-theme="mdwds"] .usa-banner__inner > .grid-col-auto {
+  flex: 0 0 auto;
+  width: 1.5rem;
+  max-width: none;
+}
+
+[data-theme="mdwds"] .usa-banner__inner > .grid-col-fill {
+  flex: 1 1 auto;
+}
+
+/* No `float` here on purpose: restoring it re-collapses the flag's grid column
+   to 0 and the flag lands on top of the "A". Freeing the percentage max-width
+   and restoring the gap Maryland's `margin:0` removed is enough. */
+[data-theme="mdwds"] .usa-banner__header-flag {
+  margin-right: 0.5rem;
+  max-width: none;
+}
+
+/* MDWDS ships no `.usa-header`, `.usa-navbar`, `.usa-logo` or `.usa-logo__text`
+   at all — it has its own `.maryland-header` instead — so the site title falls
+   back to an unstyled italic link, 18px tall against 74px under the others.
+   Maryland expresses no opinion about this component, so this restores the
+   USWDS treatment rather than inventing a Maryland one. */
+
+[data-theme="mdwds"] .usa-header {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rfp-rule);
+}
+
+/* MDWDS ships no base `.usa-nav-container` rule either, so the title sat flush
+   against the viewport edge. These are Maryland's own `.grid-container`
+   values, so the header lines up with the page content under this theme. */
+
+[data-theme="mdwds"] .usa-nav-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 87.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media screen and (min-width: 55em) {
+  [data-theme="mdwds"] .usa-nav-container {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+}
+
+[data-theme="mdwds"] .usa-logo__text {
+  font-style: normal;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+[data-theme="mdwds"] .usa-logo__text a {
+  color: #1b1b1b;
+  text-decoration: none;
 }
 
 /* --- list rows --- */

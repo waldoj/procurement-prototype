@@ -40,7 +40,7 @@ anticipation of them.
 | Frontend framework | None. No React, Vue, or Svelte. |
 | JavaScript | Vanilla ES2020+, loaded via plain `<script>` tags. **No ES modules, no `import`/`export`, no bundler.** |
 | Design system | U.S. Web Design System (USWDS), **vendored into the repository**. No CDN links. |
-| Second design system | New Jersey's "Grove" (`@newjersey/njwds`, MIT), a USWDS build with a New Jersey theme, **also vendored**. Selectable at runtime; see §3.3. |
+| Additional design systems | New Jersey's "Grove" (`@newjersey/njwds`, MIT) and Maryland's MDWDS (`cdn.maryland.gov/mdwds`, 0.50.2), both USWDS builds with state themes, **also vendored**. Selectable at runtime; see §3.3. |
 | CSS | Stock themes, unmodified. Custom CSS only where the design system provides nothing; keep it in one small `css/custom.css`. It must not hardcode color literals — see §3.4. |
 | Data | A single JSON file, `data/solicitations.json`, fetched at runtime. |
 | Accessibility | WCAG 2.2 Level AA, to the greatest plausible extent. See §8. |
@@ -69,6 +69,7 @@ anticipation of them.
 │   └── sample-pricing-worksheet.pdf
 ├── uswds/                Vendored USWDS dist (css/, js/, img/, fonts/)
 ├── njwds/                Vendored Grove theme (css/, img/, fonts/ — no js/)
+├── mdwds/                Vendored Maryland theme (css/, img/, fonts/ — no js/)
 ├── SPEC.md
 ├── DATA-SCHEMA.md
 ├── CLAUDE.md
@@ -166,17 +167,28 @@ Chrome consists of:
 
 A demonstration control, duplicated into all three pages along with the rest of
 the chrome. It swaps the `href` of a single themed `<link id="theme-stylesheet">`
-between the two vendored design systems and does nothing else.
+between the vendored design systems and does nothing else.
 
 - It changes **CSS only.** Markup does not change. Grove ships its own
   `nj-banner` component with a state seal; this prototype does not use it. The
   demonstration is "these pages, restyled," not "these pages rebuilt in New
   Jersey's system."
-- Both vendored stylesheets are USWDS builds carrying the same `usa-*` class
-  names, which is what makes the swap a one-line change.
-- Grove's `dist/js/uswds.min.js` and `uswds-init.min.js` are byte-identical to
-  the ones in `uswds/js/`, so there is no second copy of the scripts and nothing
-  to swap. If Grove is ever updated, re-check that before assuming it still holds.
+- All vendored stylesheets are USWDS builds carrying the same `usa-*` class
+  names (USWDS 513, Grove 516, Maryland 515), which is what makes the swap a
+  one-line change.
+- **No theme ships JS here, for two different reasons.** Grove's
+  `dist/js/uswds.min.js` and `uswds-init.min.js` are byte-identical to the ones
+  in `uswds/js/`, so a second copy would be redundant — re-check that if Grove
+  is updated. Maryland's `mdwds-core.js` is *not* a USWDS bundle: it is an ES
+  module driving the 434 `.maryland-*` components, which this prototype does
+  not use, and ES modules are forbidden here anyway (§2). In both cases
+  `uswds/js/` drives the `usa-*` components under every theme.
+- **A theme can be USWDS-derived and still look nearly identical to stock.**
+  Maryland keeps USWDS's primary ramp and its Source Sans Pro / Merriweather
+  typography, re-theming only secondary and accent-warm — which reach this
+  prototype through one surface, the urgency tag. Its distinctive flag colors
+  (`#002868`, `#9d2235`) live only on `.maryland-*` components. Do not "fix"
+  this by inventing colors Maryland does not use.
 - The choice persists in `localStorage` under `rfp-theme`, so it survives
   navigation between the list and detail pages.
 - The bar sits **after** the skip link in DOM order and before the banner. It
@@ -216,6 +228,35 @@ Two rules that follow from this:
 
 The demo bar (§3.3) is the deliberate exception: it is fixed, because it is the
 one element that should hold still while the rest of the page changes.
+
+### 3.5 Theme compensation
+
+A vendored theme can restyle a USWDS component for *its own* markup and break
+against the markup here. That is not a vendoring error and it is not fixed by
+editing the vendored file, which stays byte-for-byte as shipped. It is fixed
+with a rule in `css/custom.css` scoped to `[data-theme="<name>"]`.
+
+Maryland needs three such compensations, all in the banner and header:
+
+- It restyles the banner as one inline run (flag `float:none`, header text
+  `display:inline`), which assumes markup without USWDS's grid columns. Against
+  the banner markup here, the flag loses its float and stays an inline replaced
+  element, `img{max-width:100%}` then resolves against a parent whose width
+  depends on the flag itself, and both settle at zero. The text column collapses
+  the same way to its 1px `min-width` and wraps one character per line — a 904px
+  tall banner. Fixed by letting the columns grow, giving the flag column an
+  explicit width, and freeing the flag from the percentage max-width.
+- It ships no `.usa-header`, `.usa-navbar`, `.usa-logo` or `.usa-logo__text`,
+  having its own `.maryland-header`, so the site title fell back to an unstyled
+  italic link. Fixed by restoring the USWDS treatment — Maryland expresses no
+  opinion about this component, so there is nothing of its own to honor.
+- It ships no base `.usa-nav-container` rule, so the header sat flush against
+  the viewport edge. Fixed with Maryland's own `.grid-container` values.
+
+**Verify compensations in a browser, not by reading CSS.** Every one of these
+was found by measuring in headless Chrome; none is visible in the stylesheet
+diff, and the first fix that looked obvious (restoring `display:block` on the
+header text) measured as a no-op. `SPEC.md` §10 lists what to check.
 
 ## 4. The list page (`index.html`)
 
@@ -514,7 +555,8 @@ See `DATA-SCHEMA.md` for the full schema. Behavioral requirements:
 **Design-system switcher (demo bar, above the banner):**
 
 - Label: `Design system`
-- Options, in order: `U.S. Web Design System` (default), `New Jersey — Grove`
+- Options, in order: `U.S. Web Design System` (default), `New Jersey — Grove`,
+  `Maryland — MDWDS`
 
 **Footer disclaimer (required, plain and unmissable):**
 
@@ -704,7 +746,13 @@ demonstration site and contains no real solicitation. Keep each under ~50 KB.
       **under both design systems**.
 - [ ] The design-system switcher changes the theme on all three pages, persists
       across navigation, and shows no flash of the previous theme on reload.
-- [ ] Under Grove, no vendored font or image 404s.
+- [ ] Under Grove and Maryland, no vendored font or image 404s.
+- [ ] Under every theme, on all three pages, at desktop/tablet/mobile widths:
+      the banner is one or two lines tall, the flag is visible and does not
+      overlap the text, the site title is styled, and the page does not scroll
+      horizontally.
+- [ ] The banner's "Here's how you know" accordion still opens under every
+      theme — the shared `uswds/js/` must drive all of them.
 - [ ] Switching the theme changes color, not just typeface: the banner, the
       buttons, the filter panel, and the urgency tag all move.
 - [ ] `css/custom.css` contains no color literal outside the token blocks and

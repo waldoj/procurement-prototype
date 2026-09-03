@@ -18,14 +18,15 @@ tags sharing a single `solicitations` global. No `import`/`export`, no `npm inst
 bundler, no test runner, no linter config. If you find yourself writing a
 `package.json`, stop.
 
-**Both design systems are vendored, not CDN-linked.** USWDS lives in `uswds/`,
-New Jersey's Grove theme in `njwds/`. Reference both with relative paths.
+**All three design systems are vendored, not CDN-linked.** USWDS lives in
+`uswds/`, New Jersey's Grove in `njwds/`, Maryland's MDWDS in `mdwds/`.
+Reference all of them with relative paths.
 
-`njwds/` deliberately holds only `css/`, plus the 18 fonts and 33 images its
-stylesheet actually references — not the whole 19 MB dist. There is no
-`njwds/js/`: Grove's `uswds.min.js` and `uswds-init.min.js` are byte-identical
-to the vendored USWDS ones, so the scripts are shared. Re-verify that if you
-ever update Grove.
+The state themes hold only `css/` plus the fonts and images their stylesheets
+actually reference — not the full upstream dists. Neither has a `js/`
+directory: Grove's USWDS scripts are byte-identical to the vendored ones, and
+Maryland's `mdwds-core.js` is an ES module for `.maryland-*` components this
+prototype does not use. `uswds/js/` drives every theme. See `SPEC.md` §3.3.
 
 **Markup lives in HTML, not in JavaScript.** Repeated structures are
 `<template>` elements, cloned and populated. Do not build HTML with template
@@ -44,6 +45,15 @@ the top of the file, and source any new token's value from that system's own
 `.bg-<token>` utility class. `SPEC.md` §3.4 has the details, including the two
 traps: some tokens are identical in both systems (so building on them changes
 nothing), and a foreground/background pair can invert between them.
+
+**A theme can break the layout, not just the colors.** A vendored state theme
+may restyle a USWDS component for its own markup and collapse against the
+markup here — Maryland's banner does exactly that. Never patch the vendored
+file; add a rule scoped to `[data-theme="<name>"]` in `css/custom.css`.
+`SPEC.md` §3.5 has the cases and the reasoning. These faults are invisible in a
+CSS diff: find and confirm them by measuring in headless Chrome
+(`/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --headless
+--dump-dom`), never by reading the stylesheet.
 
 **Labels are specified, not invented.** `SPEC.md` §7.2 and §7.3 give the exact
 display strings and tooltip text. Use them verbatim. They were written to be

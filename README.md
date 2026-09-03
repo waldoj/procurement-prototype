@@ -29,6 +29,7 @@ Then open <http://localhost:8000/>.
 | `documents/` | Three placeholder PDFs |
 | `uswds/` | Vendored USWDS 3.13.0 dist |
 | `njwds/` | Vendored New Jersey "Grove" 2.9.2 theme (MIT) |
+| `mdwds/` | Vendored Maryland Web Design System 0.50.2 |
 
 No build step, no package manager, no framework, no test suite. Vanilla JS in
 plain `<script>` tags sharing a single `RFP` global.
@@ -40,10 +41,10 @@ prescribed approach does not work against the vendored bundle; see below.
 ## Switching design systems
 
 The slate bar above the government banner swaps the stylesheet between the U.S.
-Web Design System and New Jersey's **Grove**, the state's USWDS-based design
-system. The point is that the information architecture and the writing are the
-same either way — only the skin changes. The choice is remembered in
-`localStorage` and carries across pages.
+Web Design System, New Jersey's **Grove**, and **Maryland's MDWDS** — both
+state systems built on USWDS. The point is that the information architecture and
+the writing are the same either way; only the skin changes. The choice is
+remembered in `localStorage` and carries across pages.
 
 **It swaps CSS, not markup.** Grove has its own banner component with a state
 seal; this prototype does not use it. So what you are seeing is these pages
@@ -66,26 +67,45 @@ Because of that overlap, custom CSS that hardcodes a hex can easily pin itself
 to the shared part of the palette and never move. `css/custom.css` avoids this
 with its own token layer — see `SPEC.md` §3.4 before adding a color there.
 
-Grove is the only one of these that turned out to be feasible. Of the state
-design systems considered:
+Every US state's design system was checked by fetching its actual shipped CSS
+and counting USWDS class names. Only three states have a USWDS-derived system
+with a usable distribution:
 
-| System | USWDS-based? |
-|---|---|
-| **New Jersey "Grove"** | Yes — 516 `usa-*` classes against USWDS's 513, and a published dist |
-| Pennsylvania "Keystone" | No. Its shipped bundles contain zero `usa-` classes, and there is no public code distribution |
-| Colorado | Publishes guidance, tokens, and Figma files, but no code |
-| Kansas | No state design system found |
-| Massachusetts "Mayflower" | No — its own system, which only borrows USWDS ideas |
+| System | `usa-*` classes | Included? |
+|---|---|---|
+| **New Jersey "Grove"** | 516 | Yes — MIT, npm and versioned CDN |
+| **Maryland MDWDS** | 515 | Yes — versioned CDN, but pre-1.0 (0.50.2) and no stated license |
+| Virginia | 512 | No — served from site assets with no versioned distribution |
 
-Adding another theme, should a suitable one appear, is: vendor its CSS and the
-assets that CSS references, add one line to `SHEETS` in `js/theme.js`, and add
-one `<option>` to the bar in each of the three HTML files.
+Ruled out by the same test, all with **zero** `usa-` classes: Pennsylvania
+(Keystone), Louisiana (Pelican, Bootstrap-derived), Massachusetts (Mayflower),
+Georgia (Orchard), Delaware (Lighthouse), New York, Michigan, Utah, Alaska,
+Montana, Missouri, and Rhode Island. Colorado and Kansas publish guidance only.
 
-Grove is vendored under the MIT license; see `njwds/LICENSE`. Only its
-stylesheet and the 51 fonts and images that stylesheet references are included,
-not the full 19 MB dist. There is no `njwds/js/` — Grove's copies of
-`uswds.min.js` and `uswds-init.min.js` are byte-identical to the ones already in
-`uswds/js/`.
+Adding another theme is: vendor its CSS and the assets that CSS references, add
+one line to `SHEETS` in `js/theme.js`, add one `<option>` to the bar in each of
+the three HTML files, and add one token block in `css/custom.css`.
+
+Grove is vendored under the MIT license (`njwds/LICENSE`); Maryland publishes no
+license with MDWDS. Neither has a `js/` directory — see `SPEC.md` §3.3 for why.
+
+**Maryland needs a compensation layer.** Its banner CSS is written for its own
+`.maryland-banner` markup, and against the USWDS banner markup used here it
+collapsed: the flag and the text column both computed to zero width, the
+sentence wrapped one character per line, and the banner rendered **904px tall**.
+It also ships no `.usa-header`/`.usa-logo`/`.usa-nav-container`, so the site
+title fell back to an unstyled italic link flush against the window edge. Both
+are corrected by rules scoped to `[data-theme="mdwds"]` in `css/custom.css`; the
+vendored stylesheet is untouched. See `SPEC.md` §3.5.
+
+**Two things about Maryland worth knowing.** It keeps USWDS's primary ramp and
+typography, re-theming only secondary and accent-warm, so on these pages it is
+indistinguishable from stock USWDS except for the urgency tag. Its flag colors
+live on `.maryland-*` components this prototype does not use. And its stylesheet
+references three absolute URLs (two Material Symbols icons, one Maryland icon
+CDN) plus one asset, `img/diamond-pattern-right.svg`, that 403s on Maryland's
+own CDN — all four belong to `.maryland-*` components, so nothing here requests
+them. The vendored CSS is left byte-for-byte as shipped rather than patched.
 
 ## Deploying to GitHub Pages
 
@@ -175,5 +195,6 @@ The two checks that are easiest to skip and matter most:
   focus, not just hover.
 - Do both of those under **both** design systems, and check the browser's
   network panel under Grove for any font or image that 404s.
-- Confirm the switch changes *color*, not just the typeface — banner, buttons,
-  filter panel, and urgency tag should all move.
+- Confirm switching to Grove changes *color*, not just the typeface — banner,
+  buttons, filter panel, and urgency tag should all move. Switching to Maryland
+  should change only the urgency tag; that is correct, not a bug.
