@@ -14,7 +14,7 @@ file only routes you and flags the traps.
 These are the places where a competent default is the wrong answer here.
 
 **No frameworks, no build step, no ES modules.** Vanilla JS in plain `<script>`
-tags sharing a single `solicitations` global. No `import`/`export`, no `npm install`, no
+tags sharing a single `RFP` global. No `import`/`export`, no `npm install`, no
 bundler, no test runner, no linter config. If you find yourself writing a
 `package.json`, stop.
 
@@ -43,7 +43,7 @@ properties, so a literal hex pins that rule to one theme and it will not move
 when the design system is switched. Use the `var(--rfp-*)` tokens declared at
 the top of the file, and source any new token's value from that system's own
 `.bg-<token>` utility class. `SPEC.md` §3.4 has the details, including the two
-traps: some tokens are identical in both systems (so building on them changes
+traps: some tokens are identical across systems (so building on them changes
 nothing), and a foreground/background pair can invert between them.
 
 **A theme can break the layout, not just the colors.** A vendored state theme

@@ -129,6 +129,46 @@
 
           </div>
         </div>
+
+        <!-- Subscribe. Sits below the filter accordion and OUTSIDE it: the
+             panel is collapsed under 64em, and a subscribe control that is
+             hidden by default is not one. The summary sentence is written by
+             list.js on every render, so it always describes the filters
+             currently checked. -->
+        <section class="rfp-subscribe" id="subscribe" aria-labelledby="subscribe-heading">
+          <h2 class="rfp-subscribe__heading" id="subscribe-heading">Get updates about these opportunities</h2>
+
+          <div id="subscribe-body">
+            <p class="rfp-subscribe__summary" id="subscribe-summary"></p>
+
+            <form class="usa-form" id="subscribe-form">
+              <label class="usa-label margin-top-0" for="subscribe-email">Email address</label>
+              <input class="usa-input" id="subscribe-email" name="email" type="email" autocomplete="email" required>
+              <button class="usa-button margin-top-2" type="submit">Email me new opportunities</button>
+            </form>
+
+            <p class="margin-top-3 margin-bottom-0">
+              <button type="button" class="usa-button usa-button--unstyled rfp-subscribe__toggle" id="rss-toggle" aria-expanded="false" aria-controls="rss-address">
+                Show the RSS address
+              </button>
+              <span class="usa-tooltip" data-position="top">
+                <button type="button" class="usa-button usa-button--unstyled usa-tooltip__trigger rfp-info" id="rss-info" aria-describedby="tip-rss" aria-label="What does &quot;RSS&quot; mean?">
+                  <span class="rfp-info__mark" aria-hidden="true">i</span>
+                </button>
+                <span class="usa-tooltip__body usa-tooltip__body--top" role="tooltip" aria-hidden="true" id="tip-rss">A feed that a news reader or email app can watch, so new opportunities reach you without you having to check the site.</span>
+              </span>
+            </p>
+
+            <div id="rss-address" hidden>
+              <label class="usa-label" for="rss-url">RSS address</label>
+              <input class="usa-input rfp-subscribe__url" id="rss-url" type="text" readonly>
+              <p class="rfp-subscribe__note">
+                This demonstration site has no real feed. On a live site this
+                address would carry the same filters you picked.
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
 
       <!-- Results -->
@@ -229,6 +269,17 @@
       <span class="usa-tooltip__body usa-tooltip__body--top" role="tooltip" aria-hidden="true" data-field="info-tip"></span>
     </span>
   </li>
+</template>
+
+<!-- Replaces the whole subscribe body on submit, so a live-updating summary
+     is never left contradicting what was actually signed up for. -->
+<template id="template-subscribe-confirm">
+  <div class="usa-alert usa-alert--success">
+    <div class="usa-alert__body">
+      <h3 class="usa-alert__heading" tabindex="-1" data-field="heading">You're signed up</h3>
+      <p class="usa-alert__text" data-field="text"></p>
+    </div>
+  </div>
 </template>
 
 <template id="template-error">

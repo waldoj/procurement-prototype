@@ -25,7 +25,9 @@ anticipation of them.
 - Any content management, authoring, or data-entry workflow.
 - Any build step, bundler, package manager, transpiler, or test suite.
 - Amendments or addenda to solicitations.
-- Vendor accounts, registration, login, bid submission, or notifications.
+- Vendor accounts, registration, login, or bid submission.
+- Real notifications. The subscribe block in §4.7 is a mock-up: it sends
+  nothing, stores nothing, and serves no feed.
 - A backend, API, or database.
 - Pagination or lazy loading.
 - Multiple categories per RFP.
@@ -204,8 +206,8 @@ between the vendored design systems and does nothing else.
   navigation between the list and detail pages.
 - The bar sits **after** the skip link in DOM order and before the banner. It
   renders above the banner, but the skip link stays the first tab stop (§8.1).
-- Only these two named themes are accepted; a stored value that is not one of
-  them falls back to USWDS rather than reaching a stylesheet `href`.
+- Only these three named themes are accepted; a stored value that is not one
+  of them falls back to USWDS rather than reaching a stylesheet `href`.
 
 - **The state name follows the theme.** `js/statename.js` rewrites `Columbia`
   in the rendered text to `Maryland` or `New Jersey` when those systems are
@@ -242,7 +244,7 @@ Do not eyeball it and do not invent one.
 
 Two rules that follow from this:
 
-- **Not every token differs.** The two systems share `base-dark`,
+- **Not every token differs.** USWDS and Grove share `base-dark`,
   `base-lighter`, and the info/warning/error/success colors, and differ on the
   primary and accent-warm ramps, `base-lightest`, `base-light`, and
   `base-darkest`. A custom surface built on a shared token will not change when
@@ -251,7 +253,7 @@ Two rules that follow from this:
 - **Contrast is per theme, and pairs can invert.** USWDS `accent-warm-dark` is
   a dark orange that takes white text; Grove's is a pale cream where white
   fails at 1.66:1. Where that happens, tokenize the foreground alongside the
-  background and check both themes.
+  background and check every theme.
 
 The demo bar (§3.3) is the deliberate exception: it is fixed, because it is the
 one element that should hold still while the rest of the page changes.
@@ -298,9 +300,9 @@ header text) measured as a no-op. `SPEC.md` §10 lists what to check.
 │ Columbia Bid Opportunities                                     │
 ├────────────────────────────────────────────────────────────────┤
 │                                                                │
-│  Find work with the State of Columbia                     (h1) │
+│  Contract with the State of Columbia                      (h1) │
 │  Browse open opportunities to sell goods and services to       │
-│  state agencies. Anyone can bid.                               │
+│  state agencies.                                               │
 │                                                                │
 │  ┌──────────────────────────────────┐ ┌────────┐               │
 │  │ Search opportunities             │ │ Search │               │
@@ -308,7 +310,7 @@ header text) measured as a no-op. `SPEC.md` §10 lists what to check.
 │                                                                │
 │  ┌─ Filters ──────────┐  ┌─ Results ───────────────────────┐   │
 │  │                    │  │ Showing 12 open opportunities   │   │
-│  │ Which agency       │  │                                 │   │
+│  │ Agency             │  │                                 │   │
 │  │ [ ] Transportation │  │ Sort by [Closing soonest    ▾]  │   │
 │  │ [ ] Health         │  │ ─────────────────────────────── │   │
 │  │ [ ] …              │  │                                 │   │
@@ -437,6 +439,70 @@ When nothing matches, hide the list and render `#template-no-results`:
 >
 > [ Clear filters and start over ]
 
+### 4.7 Subscribing to updates
+
+At the bottom of the filter sidebar, **outside** the mobile accordion, a block
+offers updates about whatever the filters currently describe. None of it is
+real: no email is sent or stored, and no feed is served.
+
+It sits outside `#filter-panel` deliberately. The panel is collapsed below
+64em, and a subscribe control that is hidden by default is not one. The cost is
+that on mobile the block sits above the results; that is accepted. It stays
+visible when the result list is empty, which is when a subscription is worth
+the most.
+
+**The summary sentence.** One line, rewritten on every render, naming the
+current criteria:
+
+> You'll get updates about new opportunities in information technology from the
+> Department of Health that mention "network."
+
+Composed in this order, each clause omitted when its group is empty:
+
+| Part | Text |
+|---|---|
+| Lead | `You'll get updates about ` |
+| Nothing selected | `every new opportunity the state posts` |
+| Otherwise | `new opportunities` |
+| Categories | ` in ` + list, first letter lowercased |
+| Agencies | ` from ` + list, each prefixed with `the ` |
+| Search | ` that mention "<term>"` |
+
+- **The criteria are the two checkbox groups plus the search box.** The status
+  radio is not read: you subscribe to what gets posted, and "open and closed"
+  is a browsing choice. Search *is* read, because the count above already says
+  `matching "network"` and the two lines must not contradict each other.
+- **Lists join with `or`**, since filters within a group are OR. A serial comma
+  appears only when an item carries an "and" of its own — half the category
+  names do, and "construction and building or information technology" does not
+  parse. No agency name does, so those read plainly.
+- **Lists cap at three**, then `, and N more`, so ten checked boxes cannot run
+  the sentence away.
+- Category names are lowercased at the first letter. All ten are sentence-case
+  common nouns; not one is a proper noun or starts with an acronym.
+- A terminal period goes inside a closing quotation mark, which the search
+  clause is the only one that can produce.
+
+**Email.** A labeled `type="email"` input and a submit button. Submit is
+`preventDefault`ed and replaces the whole block body — the summary included, so
+a live-updating sentence is never left contradicting what was actually signed
+up for — with a USWDS success alert naming the address and the criteria and
+saying plainly that nothing was sent. Focus moves to the alert heading; this is
+**not** a second live region, so §8.4 still holds.
+
+**RSS.** A `<button>`, not a link, because it does not navigate (§8.3). It
+reveals the address a feed would live at, in a read-only input:
+
+```
+https://bids.example.gov/opportunities.xml?agency=health&category=it&q=network
+```
+
+The address is rebuilt on every render alongside the summary, so it visibly
+carries the same filters the sentence describes — which is the whole argument
+for showing it. There is no feed there and no file to serve; revealing the
+address rather than linking to it is what keeps the prototype from shipping a
+dead link.
+
 ## 5. The detail page (`detail.html`)
 
 ### 5.1 Loading and identification
@@ -486,7 +552,7 @@ Opportunities` on failure.
 │  What the agency needs                                    (h2) │
 │  [full description, multiple paragraphs]                       │
 │                                                                │
-│  Who can bid                                              (h2) │
+│  Who can bid on this opportunity                          (h2) │
 │  [eligibility text]                    ← omit section if empty │
 │                                                                │
 │  Meeting before you bid                                   (h2) │
@@ -553,7 +619,7 @@ JavaScript.
 See `DATA-SCHEMA.md` for the full schema. Behavioral requirements:
 
 - `data/solicitations.json` is fetched once per page load with `fetch()`.
-  `solicitations.data` caches the parsed result in a module-level variable
+  `RFP.data` caches the parsed result in a module-level variable
   and returns the same promise to repeat callers.
 - On fetch or parse failure, render a USWDS error alert in the main content
   area: "We're having trouble loading opportunities right now. Please refresh
@@ -615,7 +681,7 @@ These are the exact display labels. Do not paraphrase them. JSON keys are in
 | `questionsDeadline` | — | `Questions due` |
 | `estimatedValue` | — | `Estimated value` |
 | `contractTerm` | — | `Contract length` |
-| `eligibility` | — | `Who can bid` (h2) |
+| `eligibility` | — | `Who can bid on this opportunity` (h2) |
 | `preBidMeeting` | — | `Meeting before you bid` (h2) |
 | `submission` | — | `How to submit your bid` (h2) |
 | `attachments` | — | `Documents to download` (h2) |
@@ -625,11 +691,11 @@ Other UI strings:
 
 | Element | Text |
 |---|---|
-| Page h1 (list) | `Find work with the State of Columbia` |
-| Intro paragraph | `Browse open opportunities to sell goods and services to state agencies. Anyone can bid.` |
+| Page h1 (list) | `Contract with the State of Columbia` |
+| Intro paragraph | `Browse open opportunities to sell goods and services to state agencies.` |
 | Search input label | `Search opportunities` |
 | Search placeholder | *(none — placeholders are not labels)* |
-| Agency filter legend | `Which agency` |
+| Agency filter legend | `Agency` |
 | Category filter legend | `What's being bought` |
 | Status filter legend | `Status` |
 | Status option 1 | `Open only` |
@@ -638,6 +704,13 @@ Other UI strings:
 | Sort label | `Sort by` |
 | Back link | `Back to all opportunities` |
 | Mobile filter accordion | `Filter opportunities` |
+| Subscribe heading | `Get updates about these opportunities` |
+| Email field label | `Email address` |
+| Email submit button | `Email me new opportunities` |
+| RSS toggle, collapsed | `Show the RSS address` |
+| RSS toggle, expanded | `Hide the RSS address` |
+| RSS address field label | `RSS address` |
+| Subscribe confirmation heading | `You're signed up` |
 
 ### 7.3 Tooltip content
 
@@ -656,10 +729,12 @@ control is reachable by keyboard and announced sensibly.
 | `Type of work` | The general category this opportunity falls into. Agencies use these to help vendors find relevant work. |
 | Each agency filter option | *(the taxonomy entry's `description`)* |
 | Each category filter option | *(the taxonomy entry's `description`)* |
+| `RSS` (§4.7) | A feed that a news reader or email app can watch, so new opportunities reach you without you having to check the site. |
 
 Where an explanation runs longer than a sentence or two — currently only the
-"Who can bid" section when eligibility rules are involved — use a USWDS
-accordion (collapsed by default) rather than a tooltip.
+"Who can bid on this opportunity" section when eligibility rules are
+involved — use a USWDS accordion (collapsed by default) rather than a
+tooltip.
 
 ### 7.4 Writing rules
 
@@ -777,7 +852,7 @@ demonstration site and contains no real solicitation. Keep each under ~50 KB.
 - [ ] `404.html` exists and carries site chrome.
 - [ ] All three placeholder PDFs download.
 - [ ] Tooltips work by keyboard on both pages, including in dynamic rows,
-      **under both design systems**.
+      **under all three design systems**.
 - [ ] The design-system switcher changes the theme on all three pages, persists
       across navigation, and shows no flash of the previous theme on reload.
 - [ ] Under Grove and Maryland, no vendored font or image 404s.
@@ -795,6 +870,14 @@ demonstration site and contains no real solicitation. Keep each under ~50 KB.
 - [ ] Every label matches §7.2 verbatim.
 - [ ] No banned jargon (§7.4) appears in UI chrome.
 - [ ] Keyboard-only pass: reach and operate every control, skip link works.
+- [ ] The subscribe summary names the checked filters and the search term,
+      and rewrites itself as they change.
+- [ ] Submitting the email form shows a confirmation, sends nothing, and does
+      not reload the page.
+- [ ] The RSS address rebuilds with the filters, and nothing links to a feed
+      that does not exist.
+- [ ] The subscribe block is reachable with the filter accordion collapsed on
+      mobile, and its controls clear 24x24 under every theme.
 - [ ] Zero console errors. Zero framework dependencies. No build step.
 - [ ] Site works when served from a subdirectory (GitHub Pages project sites
       are served at `/<repo>/`), so **all internal paths are relative** — never

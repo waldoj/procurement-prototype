@@ -20,7 +20,7 @@ Then open <http://localhost:8000/>.
 
 | Path | What it is |
 |---|---|
-| `index.html` | List page: search, filter, sort |
+| `index.html` | List page: search, filter, sort, subscribe |
 | `detail.html` | Detail page, addressed as `detail.html?id=COL-2026-0142` |
 | `404.html` | Server-level 404 for bad paths |
 | `css/custom.css` | The few things USWDS doesn't supply |
@@ -151,6 +151,16 @@ handles genuinely bad *paths* and is served by GitHub Pages with a real 404.
 
 **No amendments, accounts, or bid submission.** The site lists opportunities and
 nothing more. There is no backend.
+
+**Subscribing does nothing.** The "Get updates about these opportunities" block
+at the bottom of the filter sidebar is a mock-up of a real feature. The email
+form is `preventDefault`ed and swaps itself for a confirmation that says so
+outright — no address is sent or stored anywhere. The RSS control is a button
+rather than a link precisely because there is no feed: it reveals the address a
+feed *would* live at, which rebuilds as you check boxes, instead of linking to a
+file that would 404. What the block does demonstrate is the summary sentence,
+which names the filters you have actually checked and rewrites itself as you
+change them. See `SPEC.md` §4.7.
 
 ## Notes for anyone picking this up
 

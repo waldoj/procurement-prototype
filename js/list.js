@@ -16,6 +16,7 @@
 
   var el = {};
   var debounceTimer = null;
+  var subscribed = false;
 
   function cacheElements() {
     el.form = document.getElementById("search-form");
@@ -33,6 +34,15 @@
     el.noResultsTemplate = document.getElementById("template-no-results");
     el.optionTemplate = document.getElementById("template-filter-option");
     el.errorTemplate = document.getElementById("template-error");
+    el.subscribe = document.getElementById("subscribe");
+    el.subscribeBody = document.getElementById("subscribe-body");
+    el.subscribeSummary = document.getElementById("subscribe-summary");
+    el.subscribeForm = document.getElementById("subscribe-form");
+    el.subscribeEmail = document.getElementById("subscribe-email");
+    el.confirmTemplate = document.getElementById("template-subscribe-confirm");
+    el.rssToggle = document.getElementById("rss-toggle");
+    el.rssAddress = document.getElementById("rss-address");
+    el.rssUrl = document.getElementById("rss-url");
   }
 
   // --- filter option rendering -------------------------------------------
@@ -184,6 +194,136 @@
     return text;
   }
 
+  // --- subscription ---------------------------------------------------------
+
+  function selectedNames(map, entries) {
+    var ids = selectedIds(map);
+    return entries
+      .filter(function (entry) {
+        return ids.indexOf(entry.id) !== -1;
+      })
+      .map(function (entry) {
+        return entry.name;
+      });
+  }
+
+  // Serial comma only when an item carries an "and" of its own: half the
+  // category names do, and "construction and building or information
+  // technology" does not parse. No agency name does, so those read plainly.
+  // Capped at three so a fully checked column cannot run the sentence away.
+  function nameList(names) {
+    if (names.length === 1) return names[0];
+    if (names.length > 3) {
+      return names.slice(0, 3).join(", ") + ", and " + (names.length - 3) + " more";
+    }
+    var comma = names.some(function (name) {
+      return name.indexOf(" and ") !== -1;
+    })
+      ? ","
+      : "";
+    return names.slice(0, -1).join(", ") + comma + " or " + names[names.length - 1];
+  }
+
+  // American style: a terminal period belongs inside the closing quotation
+  // mark, and the search clause is the one that can end the phrase on a quote.
+  function sentence(phrase) {
+    return phrase.slice(-1) === '"' ? phrase.slice(0, -1) + '."' : phrase + ".";
+  }
+
+  // Category names are sentence case ("Information technology") and not one of
+  // the ten is a proper noun or starts with an acronym, so this is safe.
+  function lowerFirst(name) {
+    return name.charAt(0).toLowerCase() + name.slice(1);
+  }
+
+  // "new opportunities in information technology from the Department of Health
+  // that mention "network"". Shared by the summary line and the confirmation so
+  // the two cannot drift apart. The status radio is deliberately not read: you
+  // subscribe to what gets posted, and "open and closed" is a browsing choice.
+  function criteriaPhrase() {
+    var categories = selectedNames(state.categories, model.categories);
+    var agencies = selectedNames(state.agencies, model.agencies);
+    var search = el.search.value.trim();
+
+    if (!categories.length && !agencies.length && !search) {
+      return "every new opportunity the state posts";
+    }
+
+    var phrase = "new opportunities";
+    if (categories.length) {
+      phrase += " in " + nameList(categories.map(lowerFirst));
+    }
+    if (agencies.length) {
+      phrase += " from " + nameList(agencies.map(function (name) {
+        return "the " + name;
+      }));
+    }
+    if (search) {
+      phrase += ' that mention "' + search + '"';
+    }
+    return phrase;
+  }
+
+  // Where a real feed would live. Nothing serves it. The point of showing it is
+  // that it visibly carries the same filters the summary sentence describes.
+  function rssUrl() {
+    var params = new URLSearchParams();
+    selectedIds(state.agencies).forEach(function (id) {
+      params.append("agency", id);
+    });
+    selectedIds(state.categories).forEach(function (id) {
+      params.append("category", id);
+    });
+    var search = el.search.value.trim();
+    if (search) params.set("q", search);
+    var query = params.toString();
+    return "https://bids.example.gov/opportunities.xml" + (query ? "?" + query : "");
+  }
+
+  function renderSubscribe() {
+    if (subscribed) return;
+    el.subscribeSummary.textContent =
+      "You'll get updates about " + sentence(criteriaPhrase());
+    el.rssUrl.value = rssUrl();
+  }
+
+  // Replaces the whole body, summary included: a live-updating sentence left
+  // sitting above a confirmation would soon describe different filters than
+  // the ones actually signed up for.
+  function confirmSubscription(address) {
+    var node = el.confirmTemplate.content.cloneNode(true);
+    node.querySelector("[data-field='text']").textContent =
+      "On a real site we would email " + address + " about " +
+      sentence(criteriaPhrase()) +
+      " This is a demonstration site, so no email is on its way.";
+    subscribed = true;
+    el.subscribeBody.replaceChildren(node);
+
+    // No second live region (SPEC 8.4) — the confirmation is announced by
+    // moving focus to it, and deferred for the same reason as clearFilters.
+    window.setTimeout(function () {
+      el.subscribeBody.querySelector("[data-field='heading']").focus();
+    }, 0);
+  }
+
+  function bindSubscribe() {
+    el.subscribeForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      confirmSubscription(el.subscribeEmail.value.trim());
+    });
+
+    el.rssToggle.addEventListener("click", function () {
+      var open = el.rssToggle.getAttribute("aria-expanded") === "true";
+      el.rssToggle.setAttribute("aria-expanded", open ? "false" : "true");
+      el.rssAddress.hidden = open;
+      el.rssToggle.textContent = open
+        ? "Show the RSS address"
+        : "Hide the RSS address";
+    });
+
+    RFP.tooltip.bind(el.subscribe);
+  }
+
   // --- render -------------------------------------------------------------
 
   function render() {
@@ -191,17 +331,21 @@
 
     el.count.textContent = countText(records.length);
 
+    // Before the branch: an empty result set is the moment a subscription is
+    // worth the most, so the summary has to be current there too.
+    renderSubscribe();
+
     if (records.length === 0) {
       var empty = el.noResultsTemplate.content.cloneNode(true);
       empty.querySelector("[data-field='clear']").addEventListener("click", clearFilters);
       el.list.replaceChildren(empty);
-      return;
+    } else {
+      el.list.replaceChildren.apply(el.list, records.map(buildRow));
+
+      // Rows are new DOM every render; their tooltips need binding (SPEC 8.6).
+      RFP.tooltip.bind(el.list);
     }
 
-    el.list.replaceChildren.apply(el.list, records.map(buildRow));
-
-    // Rows are new DOM every render; their tooltips need binding (SPEC 8.6).
-    RFP.tooltip.bind(el.list);
     RFP.stateName.apply();
   }
 
@@ -268,6 +412,9 @@
     console.error(error);
     el.error.replaceChildren(el.errorTemplate.content.cloneNode(true));
     el.error.hidden = false;
+    // Nothing loaded, so there is nothing to subscribe to — and an unbound
+    // form would submit and reload the page.
+    el.subscribe.hidden = true;
   }
 
   function init() {
@@ -279,6 +426,7 @@
         renderFilterOptions(el.agencyFilters, model.agencies, "agency");
         renderFilterOptions(el.categoryFilters, model.categories, "category");
         bindEvents();
+        bindSubscribe();
         render();
       })
       .catch(showError);
