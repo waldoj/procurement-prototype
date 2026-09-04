@@ -8,6 +8,7 @@
 <title>Columbia Bid Opportunities</title>
 <link id="theme-stylesheet" rel="stylesheet" href="uswds/css/uswds.min.css">
 <link rel="stylesheet" href="css/custom.css">
+<link rel="alternate" type="application/rss+xml" title="Columbia Bid Opportunities" href="rss.xml">
 <script src="js/theme.js"></script>
 <script src="uswds/js/uswds-init.min.js"></script>
 </head>
@@ -146,28 +147,21 @@
               <input class="usa-input" id="subscribe-email" name="email" type="email" autocomplete="email" required>
               <button class="usa-button margin-top-2" type="submit">Email me new opportunities</button>
             </form>
-
-            <p class="margin-top-3 margin-bottom-0">
-              <button type="button" class="usa-button usa-button--unstyled rfp-subscribe__toggle" id="rss-toggle" aria-expanded="false" aria-controls="rss-address">
-                Show the RSS address
-              </button>
-              <span class="usa-tooltip" data-position="top">
-                <button type="button" class="usa-button usa-button--unstyled usa-tooltip__trigger rfp-info" id="rss-info" aria-describedby="tip-rss" aria-label="What does &quot;RSS&quot; mean?">
-                  <span class="rfp-info__mark" aria-hidden="true">i</span>
-                </button>
-                <span class="usa-tooltip__body usa-tooltip__body--top" role="tooltip" aria-hidden="true" id="tip-rss">A feed that a news reader or email app can watch, so new opportunities reach you without you having to check the site.</span>
-              </span>
-            </p>
-
-            <div id="rss-address" hidden>
-              <label class="usa-label" for="rss-url">RSS address</label>
-              <input class="usa-input rfp-subscribe__url" id="rss-url" type="text" readonly>
-              <p class="rfp-subscribe__note">
-                This demonstration site has no real feed. On a live site this
-                address would carry the same filters you picked.
-              </p>
-            </div>
           </div>
+
+          <!-- Outside #subscribe-body on purpose: the email confirmation
+               replaces that div, and the feed stays useful afterward. The href
+               is rewritten on every render so it carries the same filters the
+               summary describes. -->
+          <p class="margin-top-3 margin-bottom-0">
+            <a class="usa-link rfp-subscribe__rss" id="rss-link" href="rss.xml">Subscribe via RSS</a>
+            <span class="usa-tooltip" data-position="top">
+              <button type="button" class="usa-button usa-button--unstyled usa-tooltip__trigger rfp-info" id="rss-info" aria-describedby="tip-rss" aria-label="What does &quot;RSS&quot; mean?">
+                <span class="rfp-info__mark" aria-hidden="true">i</span>
+              </button>
+              <span class="usa-tooltip__body usa-tooltip__body--top" role="tooltip" aria-hidden="true" id="tip-rss">A feed that a news reader or email app can watch, so new opportunities reach you without you having to check the site.</span>
+            </span>
+          </p>
         </section>
       </div>
 

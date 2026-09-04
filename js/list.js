@@ -40,9 +40,7 @@
     el.subscribeForm = document.getElementById("subscribe-form");
     el.subscribeEmail = document.getElementById("subscribe-email");
     el.confirmTemplate = document.getElementById("template-subscribe-confirm");
-    el.rssToggle = document.getElementById("rss-toggle");
-    el.rssAddress = document.getElementById("rss-address");
-    el.rssUrl = document.getElementById("rss-url");
+    el.rssLink = document.getElementById("rss-link");
   }
 
   // --- filter option rendering -------------------------------------------
@@ -264,8 +262,10 @@
     return phrase;
   }
 
-  // Where a real feed would live. Nothing serves it. The point of showing it is
-  // that it visibly carries the same filters the summary sentence describes.
+  // rss.xml is a stub that always serves the same sample items, so these
+  // parameters are decorative — a static host ignores a query string. They are
+  // here because the feed address carrying the same filters as the summary
+  // sentence is the thing being demonstrated. Relative, like every other path.
   function rssUrl() {
     var params = new URLSearchParams();
     selectedIds(state.agencies).forEach(function (id) {
@@ -277,14 +277,16 @@
     var search = el.search.value.trim();
     if (search) params.set("q", search);
     var query = params.toString();
-    return "https://bids.example.gov/opportunities.xml" + (query ? "?" + query : "");
+    return "rss.xml" + (query ? "?" + query : "");
   }
 
   function renderSubscribe() {
+    // Ahead of the guard: the link lives outside the body the confirmation
+    // replaces, so it keeps tracking the filters after an email signup.
+    el.rssLink.setAttribute("href", rssUrl());
     if (subscribed) return;
     el.subscribeSummary.textContent =
       "You'll get updates about " + sentence(criteriaPhrase());
-    el.rssUrl.value = rssUrl();
   }
 
   // Replaces the whole body, summary included: a live-updating sentence left
@@ -310,15 +312,6 @@
     el.subscribeForm.addEventListener("submit", function (e) {
       e.preventDefault();
       confirmSubscription(el.subscribeEmail.value.trim());
-    });
-
-    el.rssToggle.addEventListener("click", function () {
-      var open = el.rssToggle.getAttribute("aria-expanded") === "true";
-      el.rssToggle.setAttribute("aria-expanded", open ? "false" : "true");
-      el.rssAddress.hidden = open;
-      el.rssToggle.textContent = open
-        ? "Show the RSS address"
-        : "Hide the RSS address";
     });
 
     RFP.tooltip.bind(el.subscribe);

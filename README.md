@@ -23,6 +23,7 @@ Then open <http://localhost:8000/>.
 | `index.html` | List page: search, filter, sort, subscribe |
 | `detail.html` | Detail page, addressed as `detail.html?id=COL-2026-0142` |
 | `404.html` | Server-level 404 for bad paths |
+| `rss.xml` | Stub RSS feed — four fixed sample items, never regenerated |
 | `css/custom.css` | The few things USWDS doesn't supply |
 | `js/` | `format.js`, `tooltip.js`, `theme.js`, `data.js`, `list.js`, `detail.js` |
 | `data/solicitations.json` | All site data — 22 opportunities, 10 agencies, 10 categories |
@@ -155,12 +156,19 @@ nothing more. There is no backend.
 **Subscribing does nothing.** The "Get updates about these opportunities" block
 at the bottom of the filter sidebar is a mock-up of a real feature. The email
 form is `preventDefault`ed and swaps itself for a confirmation that says so
-outright — no address is sent or stored anywhere. The RSS control is a button
-rather than a link precisely because there is no feed: it reveals the address a
-feed *would* live at, which rebuilds as you check boxes, instead of linking to a
-file that would 404. What the block does demonstrate is the summary sentence,
-which names the filters you have actually checked and rewrites itself as you
-change them. See `SPEC.md` §4.7.
+outright — no address is sent or stored anywhere.
+
+**The RSS feed is a stub.** `rss.xml` is a hand-generated file holding four
+sample opportunities. It is never regenerated, so it drifts out of step with
+`data/solicitations.json` as soon as that changes, and it ignores the filter
+parameters the page puts in its address — check any boxes you like, the same
+four items come back. The address carries them anyway, because a feed that
+follows your filters is the thing being demonstrated. The stub says all of this
+on its face, in an XML comment at the top.
+
+What the block does demonstrate is the summary sentence, which names the
+filters you have actually checked and rewrites itself as you change them. See
+`SPEC.md` §4.7.
 
 ## Notes for anyone picking this up
 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  A STUB. This is test data for a demonstration site.
+
+  The State of Columbia is not a real state, every opportunity below is
+  fabricated, and nothing here should be bid on. The feed is a fixed file: it
+  is never regenerated, and it ignores the filter parameters that index.html
+  puts in its address, so it always serves these same four sample items.
+-->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Columbia Bid Opportunities</title>
+    <link>https://bids.example.gov/</link>
+    <atom:link href="https://bids.example.gov/rss.xml" rel="self" type="application/rss+xml" />
+    <description>New opportunities to sell goods and services to State of Columbia agencies. This is a demonstration feed with fabricated data. Do not submit a bid.</description>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 Aug 2026 09:00:00 -0500</lastBuildDate>
+    <ttl>1440</ttl>
+    <item>
+      <title>Protective vests for state patrol troopers</title>
+      <link>https://bids.example.gov/detail.html?id=COL-2026-0185</link>
+      <guid isPermaLink="false">COL-2026-0185</guid>
+      <pubDate>Thu, 27 Aug 2026 09:00:00 -0500</pubDate>
+      <category>Office supplies and furniture</category>
+      <description>The Department of Public Safety needs 700 protective vests fitted to individual troopers. Each trooper will need to be measured and provided with a vest.
+
+Agency: Department of Public Safety
+Type of work: Office supplies and furniture
+Bids due: November 18, 2026, 2:00 PM Central time</description>
+    </item>
+    <item>
+      <title>Survey of dam safety at 30 state-owned lakes</title>
+      <link>https://bids.example.gov/detail.html?id=COL-2026-0179</link>
+      <guid isPermaLink="false">COL-2026-0179</guid>
+      <pubDate>Fri, 21 Aug 2026 09:00:00 -0500</pubDate>
+      <category>Professional services</category>
+      <description>The Department of Natural Resources needs engineers to inspect 30 small dams and report on their condition. The work involves visiting each site and writing up the findings.
+
+Agency: Department of Natural Resources
+Type of work: Professional services
+Bids due: October 21, 2026, 5:00 PM Central time</description>
+    </item>
+    <item>
+      <title>Remodel of the Fairview public health clinic</title>
+      <link>https://bids.example.gov/detail.html?id=COL-2026-0194</link>
+      <guid isPermaLink="false">COL-2026-0194</guid>
+      <pubDate>Mon, 17 Aug 2026 09:00:00 -0500</pubDate>
+      <category>Construction and building</category>
+      <description>The Department of Health needs a contractor to remodel a clinic so it can serve more patients. The clinic stays open during the work.
+
+Agency: Department of Health
+Type of work: Construction and building
+Bids due: October 12, 2026, 2:00 PM Central time</description>
+    </item>
+    <item>
+      <title>Spanish and Hmong interpreters for child welfare meetings</title>
+      <link>https://bids.example.gov/detail.html?id=COL-2026-0155</link>
+      <guid isPermaLink="false">COL-2026-0155</guid>
+      <pubDate>Sun, 16 Aug 2026 09:00:00 -0500</pubDate>
+      <category>Professional services</category>
+      <description>The Department of Human Services needs interpreters for meetings with families who do not speak English. Interpreters are called as needed, usually with a few days' notice.
+
+Agency: Department of Human Services
+Type of work: Professional services
+Bids due: September 23, 2026, 5:00 PM Central time</description>
+    </item>
+  </channel>
+</rss>

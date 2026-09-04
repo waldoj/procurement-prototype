@@ -27,7 +27,8 @@ anticipation of them.
 - Amendments or addenda to solicitations.
 - Vendor accounts, registration, login, or bid submission.
 - Real notifications. The subscribe block in §4.7 is a mock-up: it sends
-  nothing, stores nothing, and serves no feed.
+  nothing and stores nothing, and `rss.xml` is a fixed stub rather than a
+  generated feed.
 - A backend, API, or database.
 - Pagination or lazy loading.
 - Multiple categories per RFP.
@@ -55,6 +56,7 @@ anticipation of them.
 ├── index.html            List page
 ├── detail.html           Detail page
 ├── 404.html              Server-level 404 (bad paths)
+├── rss.xml               Stub RSS feed, fixed contents (see §4.7)
 ├── css/
 │   └── custom.css        Minimal overrides only
 ├── js/
@@ -490,18 +492,33 @@ up for — with a USWDS success alert naming the address and the criteria and
 saying plainly that nothing was sent. Focus moves to the alert heading; this is
 **not** a second live region, so §8.4 still holds.
 
-**RSS.** A `<button>`, not a link, because it does not navigate (§8.3). It
-reveals the address a feed would live at, in a read-only input:
+**RSS.** A plain `usa-link` reading `Subscribe via RSS`, pointing at `rss.xml`.
+Its `href` is rewritten on every render alongside the summary, so it carries the
+same filters the sentence describes:
 
 ```
-https://bids.example.gov/opportunities.xml?agency=health&category=it&q=network
+rss.xml?agency=health&category=it&q=network
 ```
 
-The address is rebuilt on every render alongside the summary, so it visibly
-carries the same filters the sentence describes — which is the whole argument
-for showing it. There is no feed there and no file to serve; revealing the
-address rather than linking to it is what keeps the prototype from shipping a
-dead link.
+Three things about that address:
+
+- **It is relative**, like every other path in this repo (§10). A leading `/`
+  breaks a GitHub Pages project site.
+- **The parameters are decorative.** `rss.xml` is a fixed file and a static host
+  ignores a query string, so the same four sample items come back whatever is
+  checked. They are in the address because the feed following your filters is
+  the thing being demonstrated. The stub says so on its face, in an XML comment
+  and in its `<description>`.
+- **The link sits outside `#subscribe-body`**, which the email confirmation
+  replaces, so the feed stays reachable after someone signs up by email.
+
+The page also carries `<link rel="alternate" type="application/rss+xml">` in its
+head, pointing at the unfiltered `rss.xml`, so a reader can find the feed
+without the visible link.
+
+A link on its own line is not covered by WCAG 2.2 2.5.8's inline exception, and
+a bare line box comes up under 24px in USWDS, so `custom.css` gives it a
+`min-height` (§8.5).
 
 ## 5. The detail page (`detail.html`)
 
@@ -707,9 +724,7 @@ Other UI strings:
 | Subscribe heading | `Get updates about these opportunities` |
 | Email field label | `Email address` |
 | Email submit button | `Email me new opportunities` |
-| RSS toggle, collapsed | `Show the RSS address` |
-| RSS toggle, expanded | `Hide the RSS address` |
-| RSS address field label | `RSS address` |
+| RSS link | `Subscribe via RSS` |
 | Subscribe confirmation heading | `You're signed up` |
 
 ### 7.3 Tooltip content
@@ -874,8 +889,8 @@ demonstration site and contains no real solicitation. Keep each under ~50 KB.
       and rewrites itself as they change.
 - [ ] Submitting the email form shows a confirmation, sends nothing, and does
       not reload the page.
-- [ ] The RSS address rebuilds with the filters, and nothing links to a feed
-      that does not exist.
+- [ ] The RSS link rebuilds with the filters, stays relative, and `rss.xml`
+      parses as valid XML and is served.
 - [ ] The subscribe block is reachable with the filter accordion collapsed on
       mobile, and its controls clear 24x24 under every theme.
 - [ ] Zero console errors. Zero framework dependencies. No build step.

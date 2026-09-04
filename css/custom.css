@@ -391,19 +391,13 @@
   font-size: 0.93rem;
 }
 
-/* usa-button--unstyled carries no padding, so under USWDS this toggle lands at
-   15px tall — under the 24x24 floor in SPEC 8.5 (WCAG 2.2 2.5.8). Grove and
-   Maryland happen to clear it on their own; this makes all three do so. */
-.rfp-subscribe__toggle {
+/* A link on its own line, not inline in a sentence, so WCAG 2.2 2.5.8's inline
+   exception does not cover it and SPEC 8.5's flat 24x24 floor applies. A bare
+   line box comes up short of that under USWDS. */
+.rfp-subscribe__rss {
   display: inline-flex;
   align-items: center;
   min-height: 1.5rem;
-}
-
-/* Long and not meant to be typed into — just selected and copied. */
-.rfp-subscribe__url {
-  font-family: monospace;
-  font-size: 0.87rem;
 }
 
 /* --- footer disclaimer --- */
