@@ -188,7 +188,7 @@ written rather than edited to match.
 
 2. **Tooltips are bound by `js/tooltip.js`, not by USWDS.** `SPEC.md` §8.6 says
    to call the tooltip component's `on()` against each newly rendered subtree.
-   That is not possible with the vendored bundle — `uswds.min.js` is a
+   That is not possible with the vendored bundle—`uswds.min.js` is a
    Browserify UMD bundle exposing only `window.uswdsPresent`, keeping its
    component registry private.
 
@@ -202,8 +202,8 @@ written rather than edited to match.
    already-initialized shape (wrapper, trigger, body), and `RFP.tooltip.bind()`
    attaches focus/blur/hover/Escape handlers after each render, using the same
    `is-set`/`is-visible` classes and `aria-hidden` flips USWDS itself uses.
-   This satisfies the actual requirement behind §8.6 — tooltips that work by
-   keyboard in dynamically rendered rows — by a different mechanism.
+   This satisfies the actual requirement behind §8.6—tooltips that work by
+   keyboard in dynamically rendered rows—by a different mechanism.
 
 ## Verifying
 
@@ -214,8 +214,8 @@ The two checks that are easiest to skip and matter most:
 - Operate every control with the keyboard only.
 - Confirm tooltips inside dynamically rendered list rows respond to keyboard
   focus, not just hover.
-- Do both of those under **both** design systems, and check the browser's
+- Do both of those under_ *both* design systems, and check the browser's
   network panel under Grove for any font or image that 404s.
-- Confirm switching to Grove changes *color*, not just the typeface — banner,
+- Confirm switching to Grove changes *color*, not just the typeface—banner,
   buttons, filter panel, and urgency tag should all move. Switching to Maryland
   should change only the urgency tag; that is correct, not a bug.
